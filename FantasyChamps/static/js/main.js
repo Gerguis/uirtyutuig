@@ -22,7 +22,7 @@ document.getElementById("timerOne").innerHTML = days + ":"
 + hours + ":" + minutes + ":" + seconds + "s";
     if (t < 0) {
         clearInterval(x);
-        document.getElementById("timerTwo").innerHTML = "EXPIRED";
+        document.getElementById("timerOne").innerHTML = "EXPIRED";
     }
 }, 1000);
 
@@ -73,7 +73,7 @@ document.getElementById("timerFour").innerHTML = days + ":"
     }
 }, 1000);
 
-var deadlineThree = new Date("July 22, 2018 15:00:00").getTime();
+var deadlineFive = new Date("July 22, 2018 15:00:00").getTime();
 var x = setInterval(function() {
 var now = new Date().getTime();
 var t = deadlineThree - now;
@@ -88,10 +88,27 @@ document.getElementById("timerFive").innerHTML = days + ":"
         document.getElementById("timerFive").innerHTML = "EXPIRED";
     }
 }, 1000);
-var deadlineFour = new Date("July 23, 2018 15:00:00").getTime();
+
+var deadlineFive = new Date("July 23, 2018 15:00:00").getTime();
 var x = setInterval(function() {
 var now = new Date().getTime();
-var t = deadlineFour - now;
+var t = deadlineThree - now;
+var days = Math.floor(t / (1000 * 60 * 60 * 24));
+var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+var seconds = Math.floor((t % (1000 * 60)) / 1000);
+document.getElementById("timerSix").innerHTML = days + ":"
++ hours + ":" + minutes + ":" + seconds + "s";
+    if (t < 0) {
+        clearInterval(x);
+        document.getElementById("timerSix").innerHTML = "EXPIRED";
+    }
+}, 1000);
+
+var deadlineFive = new Date("July 23, 2018 15:00:00").getTime();
+var x = setInterval(function() {
+var now = new Date().getTime();
+var t = deadlineThree - now;
 var days = Math.floor(t / (1000 * 60 * 60 * 24));
 var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
 var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
