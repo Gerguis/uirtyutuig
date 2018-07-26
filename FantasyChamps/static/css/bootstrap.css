@@ -20,7 +20,7 @@
   --danger: #dc3545;
   --light: #f8f9fa;
   --dark: #343a40;
-  --breakpoint-xs: 400px;
+  --breakpoint-xs: 460px;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
@@ -490,7 +490,7 @@ pre {
   padding-right: 15px;
   padding-left: 15px; }
 
-@media (min-width: 400px) {
+@media (min-width: 460px) {
   .col-xs {
     flex-basis: 0;
     flex-grow: 1;
@@ -4350,7 +4350,7 @@ button.bg-dark:focus {
   clear: both;
   content: ""; }
 
-@media (min-width: 400px) {
+@media (min-width: 460px) {
   .d-xs-none {
     display: none !important; }
   .d-xs-inline {
@@ -4504,7 +4504,7 @@ button.bg-dark:focus {
 .embed-responsive-1by1::before {
   padding-top: 100%; }
 
-@media (min-width: 400px) {
+@media (min-width: 460px) {
   .flex-xs-row {
     flex-direction: row !important; }
   .flex-xs-column {
@@ -4854,7 +4854,7 @@ button.bg-dark:focus {
   .align-self-xl-stretch {
     align-self: stretch !important; } }
 
-@media (min-width: 400px) {
+@media (min-width: 460px) {
   .float-xs-left {
     float: left !important; }
   .float-xs-right {
@@ -4995,7 +4995,7 @@ button.bg-dark:focus {
 .mh-100 {
   max-height: 100% !important; }
 
-@media (min-width: 400px) {
+@media (min-width: 460px) {
   .m-xs-0 {
     margin: 0 !important; }
   .mt-xs-0,
@@ -5929,7 +5929,7 @@ button.bg-dark:focus {
   text-overflow: ellipsis;
   white-space: nowrap; }
 
-@media (min-width: 400px) {
+@media (min-width: 460px) {
   .text-xs-left {
     text-align: left !important; }
   .text-xs-right {

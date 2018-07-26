@@ -55,7 +55,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_user_agents.middleware.UserAgentMiddleware',
-
+    # 'FantasyChamps.CustomMiddlewares.StackOverflowMiddleware'
 ]
 
 ROOT_URLCONF = 'FantasyChamps.urls'

@@ -32,8 +32,6 @@
 }
 
 /*****Custyom Header SIze*****/
-h4 { font-size: 16px; }
-
 body
 {
   font-family: 'Lato', sans-serif;
@@ -179,6 +177,10 @@ body
   left: 5%;
 }
 
+.MatchHeader{
+  font-size: 16px;
+}
+
 .StartsIn{
   background-color: #ff4f8b  !important;
   border-color: #ff4f8b  !important;
@@ -279,22 +281,20 @@ body
   }
   .MatchInfo{
     position: relative;
-    height:60%;
-    width:90%;
-    left:5%;
-  }
-  .TeamFirst{
-    width: 60px;
-    top:5%;
-    height: 90%;
-  }
-
-  .TeamSecond{
-    width: 60px;
+    heightMa
     top:5%;
     height: 90%; 
   }
+  .LeagueCard h4{
+    font-size: 14px;
+  }
 
+}
+
+@media (max-width: 400px){
+  .MarginTop{
+    margin-top: 15px  !important;
+  }
 }
 
 /*****Match League*****/
@@ -304,12 +304,13 @@ body
   border-radius:50%;
 }
 
+.LeagueArea{
+  width:100%;
+}
+
 .LeagueCard{
-  position: relative;
-  margin-top: 1.3vw;
   top:-1%;
-  left:4%;
-  height:100px;
+  height:200px;
   background-color: #8AD3FF;
   border-radius: 5px;
   -webkit-box-shadow: 0 1px 7px;
@@ -317,14 +318,54 @@ body
   box-shadow: 0 1px 7px;
 }
 
+.row{
+  margin-left: auto; 
+  margin-right: auto;
+}
 
+.JoinNow
+{
+  position: relative;
+  background-color: #ff4f8b  !important;
+  border-color: #ff4f8b  !important;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 6px 12px;
+  color:#fff;
+  width: 100%;
+  top:-10px;
+}
 
+.LeagueName{
+  position: relative;
+  top:5px;;
+}
 
+.LeagueCard hr{
+  position: relative;
+  top:-5px;
+}
 
+.LeagueInfoContainer{
+  position: relative;
+  top:-15px;
+}
 
+.SeparatorDiv{
+  width:100%;
+  height:30px;
+}
 
-
-
-
-
-
+.MatchCard{
+  top:10px;
+  margin-bottom: 20px;
+  position: relative;  
+  height:50px;
+  width:96%;
+  left:2%;
+  background-color: #8AD3FF;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 7px;
+  -moz-box-shadow: 0 1px 7px;
+  box-shadow: 0 1px 7px;
+}
