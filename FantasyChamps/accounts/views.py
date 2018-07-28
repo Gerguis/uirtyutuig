@@ -1,10 +1,10 @@
-from django.shortcuts import render
-from . forms import UserForm, ProfileForm
-from .models import User
-from django.contrib.auth import login, logout, authenticate
-from django.http import HttpResponseRedirect, HttpResponse
-from django.core.urlresolvers import reverse
-from django.contrib.auth.decorators import login_required
+# from django.shortcuts import render
+# from . forms import UserForm, ProfileForm
+# from .models import User
+# from django.contrib.auth import login, logout, authenticate
+# from django.http import HttpResponseRedirect, HttpResponse
+# from django.core.urlresolvers import reverse
+# from django.contrib.auth.decorators import login_required
 
 
 # @login_required

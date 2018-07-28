@@ -6,6 +6,7 @@ body
 
 .header-blue{
   background-repeat:none   !important;
+  background-image: url(static/images/back.jpg)
 }
 a:link, a:visited {
     color: #b1bbec;

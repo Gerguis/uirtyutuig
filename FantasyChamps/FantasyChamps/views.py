@@ -8,6 +8,10 @@ from django.contrib.auth.decorators import login_required
 #     template_name = "index.html"
 
 
+def handler404(request):
+    return HttpResponseRedirect(reverse('IndexView'))
+
+
 @login_required
 def UserLogoutView(request):
     logout(request)

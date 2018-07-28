@@ -24,7 +24,7 @@ STATICFILES = os.path.join(BASE_DIR, 'static')
 SECRET_KEY = '$67zb#cc!&hch1e=&rqx_wz6tw9me8c7#e)*4@3ox9k&7%3v5n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["fightback.pythonanywhere.com", "127.0.0.1"]
 
@@ -129,3 +129,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     STATICFILES,
 ]
+

@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from . import views
-
+handler404 = views.handler404
 
 urlpatterns = [
     url(r'^$', views.IndexView, name="IndexView"),
