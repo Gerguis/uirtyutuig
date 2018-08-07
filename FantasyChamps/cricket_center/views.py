@@ -2,8 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import MatchDetail, IndiaPakistanTeam
 import time
-from . import forms as my_form
-# CreateTeamKeeperForm, CreateTeamBatsmenForm, CreateTeamAllroundersForm, CreateTeamBowlersForm
+from .forms import CreateTeamKeeperForm, CreateTeamBatsmenForm, CreateTeamAllroundersForm, CreateTeamBowlersForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django import forms
 
@@ -21,15 +20,15 @@ def SingleMatchView(request, slug):
 
 def CreateTeamView(request, slug):
     team_created = False
-    keeper_form = my_form.CreateTeamKeeperForm()
-    batsmen_form = my_form.CreateTeamBatsmenForm()
-    allrounders_form = my_form.CreateTeamAllroundersForm()
-    bowlers_form = my_form.CreateTeamBowlersForm()
+    keeper_form = CreateTeamKeeperForm()
+    batsmen_form = CreateTeamBatsmenForm()
+    allrounders_form = CreateTeamAllroundersForm()
+    bowlers_form = CreateTeamBowlersForm()
     if request.method == 'POST':
-        keeper_form = my_form.CreateTeamKeeperForm(data=request.POST)
-        batsmen_form = my_form.CreateTeamBatsmenForm(data=request.POST)
-        allrounders_form = my_form.CreateTeamAllroundersForm(data=request.POST)
-        bowlers_form = my_form.CreateTeamBowlersForm(data=request.POST)
+        keeper_form = CreateTeamKeeperForm(data=request.POST)
+        batsmen_form = CreateTeamBatsmenForm(data=request.POST)
+        allrounders_form = CreateTeamAllroundersForm(data=request.POST)
+        bowlers_form = CreateTeamBowlersForm(data=request.POST)
         if keeper_form.is_valid() and batsmen_form.is_valid() and allrounders_form.is_valid() and bowlers_form.is_valid():
             user_teams_obj = IndiaPakistanTeam.objects.filter(username_of_player__exact=request.user.username)
             if user_teams_obj.count() < 3:
