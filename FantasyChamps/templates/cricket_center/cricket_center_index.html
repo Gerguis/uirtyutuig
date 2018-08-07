@@ -12,23 +12,31 @@
     <div class="color-overlay"></div>
   </div>  
   <div class="MatchArea">   
-    <div class="MatchInfoCard">
-      <div class="MatchInfo">
-        <img src="{% static "images/kent.png" %}" alt="KentLogo" class="TeamFirst" class="img-responsive">
-        <img src="{% static "images/hamp.png" %}" alt="HampLogo" class="TeamSecond" class="img-responsive">
-        <h1 class="vs">VS</h1>
-        <div class="MatchBetween">
-          <h4 class="MatchHeader">Kent vs Hamp !</h4>
-          <h6>(Blast T20)</h6>  
+    {% for match in match_obj %}
+      <div class="MatchInfoCard">
+        <div class="MatchInfo">
+          {% with "images/"|add:match.team_one_image as image_static %}
+            <img src="{% static image_static %}" alt="KentLogo" class="TeamFirst" class="img-responsive"/>
+          {% endwith %}
+          {% with "images/"|add:match.team_two_image as image_static %}
+            <img src="{% static image_static %}" alt="KentLogo" class="TeamSecond" class="img-responsive"/>
+          {% endwith %}
+          <h1 class="vs">VS</h1>
+          <div class="MatchBetween">
+            <h4 class="MatchHeader">{{match.team_one}} vs {{match.team_two}}</h4>
+            <h6>{{match.tournament_name}}</h6>  
+          </div>
+        </div>
+        <div class="ActionInfo">
+          <button type="button" class="btn btn-success btn-lg StartsIn" id="timerOne"></b></button>
+          <div class="SeparatorLine"></div>
+          <a href="{% url 'cricket_center:match' slug='FirstMatchOfFantasyChamps' %}"><button type="button" class="btn btn-success btn-lg PlayNow">Play Now</b></button></a>
         </div>
       </div>
-      <div class="ActionInfo">
-        <button type="button" class="btn btn-success btn-lg StartsIn" id="timerOne"></b></button>
-        <div class="SeparatorLine"></div>
-        <a href="{% url 'cricket_center:match' slug='FirstMatchOfFantasyChamps' %}"><button type="button" class="btn btn-success btn-lg PlayNow">Play Now</b></button></a>
-      </div>
-    </div>
-    <div class="MatchInfoCard">
+    {% endfor %}
+  </div>
+{% endblock %}
+    {# <div class="MatchInfoCard">
       <div class="MatchInfo">
         <img src="{% static "images/kent.png" %}" alt="KentLogo" class="TeamFirst" class="img-responsive">
         <img src="{% static "images/hamp.png" %}" alt="HampLogo" class="TeamSecond" class="img-responsive">
@@ -112,9 +120,8 @@
         <button type="button" class="btn btn-success btn-lg PlayNow">Play Now</b></button>
       </div>
     </div>
-  </div>
+  </div> #}
 
-{% endblock %}
 
 
 <!--<div class="outer">

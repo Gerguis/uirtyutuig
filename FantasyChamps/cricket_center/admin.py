@@ -3,4 +3,5 @@ from . import models
 # Register your models here.
 
 
-admin.site.register(models.MatchDetails)
+admin.site.register(models.MatchDetail)
+admin.site.register(models.IndiaPakistanTeam)

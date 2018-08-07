@@ -24,7 +24,7 @@ STATICFILES = os.path.join(BASE_DIR, 'static')
 SECRET_KEY = '$67zb#cc!&hch1e=&rqx_wz6tw9me8c7#e)*4@3ox9k&7%3v5n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["fightback.pythonanywhere.com", "127.0.0.1"]
 
@@ -113,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
