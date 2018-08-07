@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load user_agents %}
+<html>
+  <head>
+    <title>{% block title %}FantasyChamps{% endblock title %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block stylesheets %}
+      <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+      <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+      <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+      <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+      <link rel="stylesheet" href="{% static "css/cricket_center/cricket_center_main.css" %}">
+    {% endblock stylesheets %}
+</head>
+  <body>
+    <div>
+      <div class="nav">
+        <div class="nav-header">
+          <div class="nav-title">
+            FantasyChamps          
+          </div>
+        </div>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+        <input type="checkbox" id="nav-check">
+        <div class="nav-links">
+          <a href="#">Profile</a></li>
+          <a href="#">Finace</a></li>
+          <a href="#">Something</a></li>
+          <li role="separator" class="divider"></li>
+          <a href="{% url 'UserLogoutView' %}">Logout</a>
+        </div>
+      </div>
+
+    {% block other_page_content %}
+    {% endblock%}
+
+    {% block scripts %}
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+      <script src="{% static 'js/main.js' %}"></script>
+    {% endblock scripts %}
+  </body>
+</html>

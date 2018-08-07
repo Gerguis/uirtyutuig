@@ -1,0 +1,278 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% load user_agents %}
+{% block title %}Home | {{block.super}}{% endblock title %}
+{% block stylesheets %}
+  {{block.super}}
+{% endblock stylesheets %}
+{% block other_page_content %}
+<div id="first">
+  <div class="trans row">
+    <p>&nbsp;</p><p>&nbsp;</p>
+    <div class="col-md-7">
+      <div class="logo">
+        <img src="{% static "images/testlogo.png" %}" alt="Sorry! LOGO Not Found" class="logo"  class="img-responsive">
+        {# <h4 style="text-align:right; margin-top:-30px;">LET'S BE THE <b>CHAMPS</b> TOGETHER.</h4> #}
+        <div class="mainContent" style="margin-top:40px;">
+          <h1>PLAY FANTASY SPORTS & </h1>
+          <h1>WIN DAILY <b>CASH PRIZES!</b></h1>
+          <h3 style="margin-top:40px">Start earning Real Cash <span style="color: #ff4f8b;">without any PAN Card or Bank Account details</span></h3>
+          <h3 style="margin-bottom:40px">Get paid directy in your <span style="color: #ff4f8b;">PayTM</span> account</h3>
+          <button type="button" class="btn btn-success btn-lg" id="signup">Signup to Get Instant <b>₹25 Bonus</b></button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form_wrapper">
+        <div class="container-fluid">
+          <h2 class="LoginHeading">Login or Signup with FantasyChamps</h2>
+          <form method="post" action="{% url 'IndexView' %}">
+            {% csrf_token %}
+            {{ login_form.non_field_errors }}
+            {{ login_form.source.errors }}
+            {{ login_form.source }}
+            {{ login_form.username.label_tag }}
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user" style="color:black;"></i></span>         
+              {% render_field login_form.username class="form-control" %}
+            </div>
+            {{ login_form.username.errors }}
+
+            {{ login_form.password.label_tag }}
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-key" style="color:black;"></i></span>         
+              {% render_field login_form.password class="form-control" %}
+            </div>
+            {{ login_form.password.errors }}
+            <div class="ButtonContainer">
+              <input class="btn btn-success btn-lg" type="submit" name="submit" id="signup" value="Login">
+            </div>
+          </form>
+        </div>
+
+
+        {% if registered %}
+          <h2>Thank-You for you Time!</h2>
+          <div class="alert alert-success" role="alert">
+            Thank You for creating account. Now please login!
+          </div>
+        
+        {% else %}
+          <form method="post">
+            {% csrf_token %}
+            <!-- ****UserForm**** -->
+            <div class="row">
+              <div class="col-md-6 col-sm-6" class="inner_form_wrapper">
+                {{ user_form.non_field_errors }}
+                {{ user_form.source.errors }}
+                {{ user_form.source }}
+
+
+                {{ user_form.username.label_tag }}
+                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user" style="color:black;"></i></span>         
+                  {% render_field user_form.username class="form-control" %}
+                </div>
+                {{ user_form.username.errors }}
+
+
+                {{ user_form.email.label_tag }}
+                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope" style="color:black;"></i></span> 
+                  {% render_field user_form.email class="form-control" %}
+                </div>
+                {{ user_form.email.errors }}
+
+
+                {{ user_form.password.label_tag }}
+                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-key" style="color:black;"></i></span>         
+                  {% render_field user_form.password class="form-control" %}
+                </div>
+                {{ user_form.password.errors }}
+              </div>
+              <!-- ****ProfileForm -->
+
+
+              <div class="col-md-6 col-sm-6" class="inner_form_wrapper">
+                {{ profile_form.non_field_errors }}
+                {{ profile_form.source.errors }}
+                {{ profile_form.source }}
+
+
+                {{ profile_form.phone_number.label_tag }}
+                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-phone" style="color:black;"></i></span>         
+                  {% render_field profile_form.phone_number class="form-control" %}
+                </div>
+                {{ profile_form.phone_number.errors }}
+
+
+                {{ profile_form.date_of_birth.label_tag }}
+                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-calendar" style="color:black;"></i></span>
+                  {% render_field profile_form.date_of_birth class="form-control" %}
+                </div>
+                {{ profile_form.date_of_birth.errors }}
+
+
+                {{ profile_form.state.label_tag }}
+                {% render_field profile_form.state class="form-control" %}
+                {{ profile_form.state.errors }}
+
+              </div>
+            </div>
+            <div class="ButtonContainer">
+              <input class="btn btn-success btn-lg" type="submit" name="submit" id="signup" value="Register" style="margin-bottom:30px">    
+            </div>
+          </form>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<div id="second">
+  <div class="transnew row">
+    <p>&nbsp;</p><p>&nbsp;</p>
+    <div class="col-sm-12"><h1>How to Play on FantasyChamp?</h1><br><br><br></div>
+    <div class="col-sm-4 stepContainer" data-aos="fade-up" id="setp1">
+      <center><h2 class="countSteps">1</h2>
+      <div class="qLoader2 manualCount"></div></center>
+      <div><br>
+        <img src="{% static "images/testStep.jpg" %}" alt="Sorry!" class="logo stepsImage" data-aos="zoom-in">
+        <h2>Select A League</h2>
+        <h4>Select a League of your Choice from Available Leaguages</h4>
+      </div>
+    </div><br><br><br>
+    <div class="col-sm-4 stepContainer" data-aos="fade-up" id="setp2">
+      <center><h2 class="countSteps">2</h2>
+      <div class="qLoader2 manualCount"></div></center>
+      <div><br>
+        <img src="{% static "images/testStep.jpg" %}" alt="Sorry!" class="logo stepsImage" data-aos="zoom-in">
+        <h2>Choose 11 Players</h2>
+        <h4>Select your best 11 players from both the teams. And Choose One Captain and One Vice-Captain</h4>
+      </div>
+    </div><br><br><br>
+    <div class="col-sm-4" data-aos="fade-up" id="setp3">
+      <center><h2 class="countSteps">3</h2>
+      <div class="qLoader2 manualCount"></div></center>
+      <div><br>
+        <img src="{% static "images/testStep.jpg" %}" alt="Sorry!" class="logo stepsImage" data-aos="zoom-in">
+        <h2>Win Daily Cash Prizes</h2>
+        <h4>Win Cash Prizes according to the rank you got in Leagues</h4>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="third">
+  <div class="trans row">
+
+    {% if request|is_mobile %}
+      <div class="col-sm-6 col-xs-12"><br>
+        <div class="" style="margin-top:20%;">
+          <i class="fa fa-certificate fa-3x" aria-hidden="true"></i>
+          <h3>Signup Bonus<h3>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12"><br>
+        <div class="" style="margin-top:20%;">
+          <i class="fa fa-certificate fa-3x" aria-hidden="true"></i>
+          <h3>Signup Bonus<h3>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12"><br>
+        <div class="" style="margin-top:20%;">
+          <i class="fa fa-certificate fa-3x" aria-hidden="true"></i>
+          <h3>Signup Bonus<h3>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12"><br>
+        <div class="" style="margin-top:20%;">
+          <i class="fa fa-certificate fa-3x" aria-hidden="true"></i>
+          <h3>Signup Bonus<h3>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12"><br>
+        <div class="" style="margin-top:20%;">
+          <i class="fa fa-certificate fa-3x" aria-hidden="true"></i>
+          <h3>Signup Bonus<h3>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12"><br>
+        <div class="" style="margin-top:20%;">
+          <i class="fa fa-certificate fa-3x" aria-hidden="true"></i>
+          <h3>Signup Bonus<h3>
+        </div>
+      </div>  
+    
+    {% else %}
+      <div class="col-sm-4" style=":100vh;"><br>
+        <div class="col-sm-12" data-aos="fade-up-left" class="featuresConatiner">
+          <div class="" style="margin-top:20%;">
+            <i class="fa fa-certificate fa-3x" aria-hidden="true"></i>
+            <h3>Signup Bonus<h3>
+          </div>
+        </div>
+        <div class="col-sm-12" data-aos="fade-left" class="featuresConatiner">
+          <div class="" style=";margin-top:20%;">
+            <i class="fa fa-certificate fa-3x" aria-hidden="true"></i>
+            <h3>Variety of Leages<h3>
+          </div>
+        </div>
+        <div class="col-sm-12" data-aos="fade-down-left" class="featuresConatiner">
+          <div class="" style="margin-top:20%;">
+            <i class="fa fa-certificate fa-3x" aria-hidden="true"></i>
+            <h3>Win Real Cash Prizes<h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <img src="{% static "images/testlogo.png" %}" alt="Sorry!" class="logo" id="featuresLogo" data-aos="zoom-in">
+      </div>
+      <div class="col-sm-4">
+        <div class="col-sm-12" data-aos="fade-up-right" class="featuresConatiner">
+          <div class="" style="margin-top:20%;">
+            <i class="fa fa-certificate fa-3x" aria-hidden="true"></i>
+            <h3>24x7 Support<h3>
+          </div>
+        </div>
+        <div class="col-sm-12" data-aos="fade-right" class="featuresConatiner">
+          <div class="" style=";margin-top:20%;">
+            <i class="fa fa-certificate fa-3x" aria-hidden="true"></i>
+            <h3>High Rewards<h3>
+          </div>
+        </div>
+        <div class="col-sm-12" data-aos="fade-down-right" class="featuresConatiner">
+          <div class="" style="margin-top:20%;">
+            <i class="fa fa-certificate fa-3x" aria-hidden="true"></i>
+            <h3>No Need of PAN Card Details<h3>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+<div id="fourth">
+  <div class="trans row">
+    <p>&nbsp;</p><p>&nbsp;</p>
+    <div class="col-sm-12"><h1>FAQs</h1><br><br><br></div>
+    <div class="col-sm-12 faq">
+      <div class="col-md-6">
+        <div class="qa-section">
+          <b><p class="question">Q. What is FantasyChamps?</p></b>
+          <p class="answer">Ans. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidastat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div><br><br>
+        <div class="qa-section">
+          <b><p class="question">Q. Ok, but what is Fantasy Cricket?</p></b>
+          <p class="answer">Ans. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="qa-section">
+          <b><p class="question">Q. What is point System?</p></b>
+          <p class="answer">Ans. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div><br><br>
+        <div class="qa-section">
+          <b><p class="question">Q. What about Competetion!</p></b>
+          <p class="answer">Ans. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+{% endblock %}

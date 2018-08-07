@@ -1,0 +1,51 @@
+{% extends "cricket_center_base.html" %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% load user_agents %}
+{% block title %}Cricket Center | {{block.super}}{% endblock title %}
+{% block stylesheets %}
+  {{block.super}}
+{% endblock stylesheets %}
+
+{% block other_page_content %}
+
+	<div class="MainBackground">
+	  <div class="color-overlay"></div>
+	</div>  
+	<div class="MatchArea">
+		{% if team_cteated%}
+            <h1>Team create</h1>
+        {% else %}
+        <div class="container">
+        	<form method="POST">
+                {% csrf_token %}
+                <h3>Select ur Keeper</h3>
+                {{keeper_form.as_p}}
+                <h3>Select ur Batsmen</h3>
+                {{batsmen_form.as_p}}
+                <h3>Select ur Allrounder</h3>
+                {{allrounders_form.as_p}}
+                <h3>Select ur Bowlers</h3>
+                {{bowlers_form.as_p}}
+      			<div class="ButtonContainer">
+	                  <input class="btn btn-success btn-lg" type="submit" name="submit" value="Create Team">
+	            </div>
+            </form>
+        </div>
+        {% endif %}
+	</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
