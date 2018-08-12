@@ -16,24 +16,82 @@
 		{% if team_cteated%}
             <h1>Team create</h1>
         {% else %}
-        <div class="container">
-        	<form method="POST">
-                {% csrf_token %}
-                <h3>Select ur Keeper</h3>
-                {{keeper_form.as_p}}
-                <h3>Select ur Batsmen</h3>
-                {{batsmen_form.as_p}}
-                <h3>Select ur Allrounder</h3>
-                {{allrounders_form.as_p}}
-                <h3>Select ur Bowlers</h3>
-                {{bowlers_form.as_p}}
-      			<div class="ButtonContainer">
-	                  <input class="btn btn-success btn-lg" type="submit" name="submit" value="Create Team">
+        	<h3>Fade in Tabs</h3>
+
+			<div class="tab">
+			  <button class="tablinks" onclick="openCity(event, 'Keepers')">Keepers</button>
+			  <button class="tablinks" onclick="openCity(event, 'Batsmen')">Batsmen</button>
+			  <button class="tablinks" onclick="openCity(event, 'Allrounders')">Allrounders</button>
+			  <button class="tablinks" onclick="openCity(event, 'Bowlers')">Bowlers</button>
+			</div>
+			<form method="POST">
+				<div id="Keepers" class="main_upper tabcontent">
+					{% csrf_token %}
+					{{ keeper_form.non_field_errors }}
+		            {{ keeper_form.source.errors }}
+		            {{ keeper_form.source }}
+		            {% for field in keeper_form.visible_fields %}
+            			{% render_field field|add_class:'tgl tgl-skewed' %}	
+            			<label for="{{ field.id_for_label }}" class="tgl-btn" data-tg-off = "NOT SELECTED&nbsp;&nbsp;" data-tg-on = "SELECTED&nbsp;&nbsp;">&nbsp;&nbsp;<span class="custom_field">{{field.label|title}}</span></label>
+	            		{{ field.errors }}
+				    {% endfor %}
+				</div>
+
+				<div id="Batsmen" class="tabcontent">
+					{% csrf_token %}
+					 {% for field in batsmen_form.visible_fields %}
+		            	{% render_field field|add_class:'tgl tgl-skewed' %}	
+            			<label for="{{ field.id_for_label }}" class="tgl-btn" data-tg-off = "NOT SELECTED&nbsp;&nbsp;" data-tg-on = "SELECTED&nbsp;&nbsp;">&nbsp;&nbsp;<span class="custom_field">{{field.label|title}}</span></label>
+	            		{{ field.errors }}
+		            {% endfor %}
+				</div>
+
+				<div id="Allrounders" class="tabcontent">
+			  		{% csrf_token %}
+					 {% for field in allrounders_form.visible_fields %}
+		            	{% render_field field|add_class:'tgl tgl-skewed' %}	
+            			<label for="{{ field.id_for_label }}" class="tgl-btn" data-tg-off = "NOT SELECTED&nbsp;&nbsp;" data-tg-on = "SELECTED&nbsp;&nbsp;">&nbsp;&nbsp;<span class="custom_field">{{field.label|title}}</span></label>
+	            		{{ field.errors }}
+		            {% endfor %}
+				</div>
+    
+    			<div id="Bowlers" class="tabcontent">
+			  		{% csrf_token %}
+					 {% for field in bowlers_form.visible_fields %}
+		            	{% render_field field|add_class:'tgl tgl-skewed' %}	
+            			<label for="{{ field.id_for_label }}" class="tgl-btn" data-tg-off = "NOT SELECTED&nbsp;&nbsp;" data-tg-on = "SELECTED&nbsp;&nbsp;">&nbsp;&nbsp;<span class="custom_field">{{field.label|title}}</span></label>
+	            		{{ field.errors }}
+		            {% endfor %}
+				</div>
+
+				<div class="ButtonContainer">
+	              <center><input class="btn btn-success btn-sm" type="submit" name="submit" id="signup" value="Create Team"></center>
 	            </div>
-            </form>
-        </div>
-        {% endif %}
+			</form>
+
+
+
+
+
+        {% endif %}        	
 	</div>
+
+	<script>
+	function openCity(evt, cityName) {
+	    var i, tabcontent, tablinks;
+	    tabcontent = document.getElementsByClassName("tabcontent");
+	    for (i = 0; i < tabcontent.length; i++) {
+	        tabcontent[i].style.display = "none";
+	    }
+	    tablinks = document.getElementsByClassName("tablinks");
+	    for (i = 0; i < tablinks.length; i++) {
+	        tablinks[i].className = tablinks[i].className.replace(" active", "");
+	    }
+	    document.getElementById(cityName).style.display = "block";
+	    evt.currentTarget.className += " active";
+	}
+	</script>
+
 
 {% endblock %}
 
@@ -48,4 +106,44 @@
 
 
 
+<!--
+<div class="container">
+        	<form method="POST">
+                {% csrf_token %}
+                <h3>Select ur Keeper</h3>
+                {{keeper_form.as_p}}
+                <h3>Select ur Batsmen</h3>
+                {{batsmen_form.as_p}}
+                <h3>Select ur allrounders</h3>
+                {{allrounderss_form.as_p}}
+                <h3>Select ur Bowlers</h3>
+                {{bowlers_form.as_p}}
+      			<div class="ButtonContainer">
+	                  <input class="btn btn-success btn-lg" type="submit" name="submit" value="Create Team">
+	            </div>
+	            {{ keeper_form.non_field_errors }}
+	            {{ keeper_form.source.errors }}
+	            {{ keeper_form.source }}
+	            {{ keeper_form.Dinesh_Ramdin.label_tag }}
+	            <div class="input_field"> 
+	              {% render_field keeper_form.Dinesh_Ramdin %}
+	            </div>
+	            {{ keeper_form.Dinesh_Ramdin.errors }}
 
+	            {{ keeper_form.MS_Dhoni.label_tag }}
+	            <div class="input_field">   
+	              {% render_field keeper_form.MS_Dhoni %}
+	            </div>
+	            {{ keeper_form.MS_Dhoni.errors }}
+
+	            {{ keeper_form.Dinesh_Kartik.label_tag }}
+	            <div class="input_field"> 
+	              {% render_field keeper_form.Dinesh_Kartik %}
+	            </div>
+	            {{ keeper_form.Dinesh_Kartik.errors }}
+	            <div class="ButtonContainer">
+	              <input class="btn btn-success btn-lg" type="submit" name="submit" id="signup" value="Login">
+	            </div>
+            </form>
+
+        </div>

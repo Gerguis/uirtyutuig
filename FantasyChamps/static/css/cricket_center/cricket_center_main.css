@@ -354,3 +354,170 @@ body
   -moz-box-shadow: 0 1px 7px;
   box-shadow: 0 1px 7px;
 }
+
+/*****Test for form*****/
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.main_upper {
+    display: block;
+    padding: 6px 12px;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+
+/*.field_area{
+  position: relative;
+  background-color: green;
+  margin-bottom: 5px;
+  width: 90%;
+}
+
+/*.custom_label{
+  color:red;
+}
+
+.custom_check{
+  position: absolute;
+  top: 50%; 
+  left: 90%;
+  transform: translate(-50%,-50%);
+  border-radius: 10px;
+}*/
+
+
+
+
+
+
+
+
+/***Custom CSS for checkboxes***/
+.custom_field{
+  position: absolute;
+  top: 4px;
+  font-size: 16px;
+  color: white;
+}
+
+
+.tgl {
+  display: none;
+}
+
+.tgl::-moz-selection, .tgl:after::-moz-selection, .tgl:before::-moz-selection, .tgl *::-moz-selection, .tgl *:after::-moz-selection, .tgl *:before::-moz-selection, .tgl + .tgl-btn::-moz-selection {
+  background: none;
+}
+.tgl::selection, .tgl:after::selection, .tgl:before::selection, .tgl *::selection, .tgl *:after::selection, .tgl *:before::selection, .tgl + .tgl-btn::selection {
+  background: none;
+}
+.tgl + .tgl-btn {
+  outline: 0;
+  display: block;
+  width: 100%;
+  height: 2em;
+  position: relative;
+  cursor: pointer;
+}
+.tgl + .tgl-btn:after {
+  left: 0;
+}
+.tgl + .tgl-btn:before {
+  display: none;
+}
+.tgl:checked + .tgl-btn:after {
+  left: 50%;
+}
+
+.tgl-skewed + .tgl-btn {
+  overflow: hidden;
+  -webkit-transform: skew(0deg);
+          transform: skew(0deg);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  transition: all .2s ease;
+  font-family: sans-serif;
+  background: #888;
+}
+.tgl-skewed + .tgl-btn:after, .tgl-skewed + .tgl-btn:before {
+  -webkit-transform: skew(0deg);
+          transform: skew(0deg);
+  display: inline-block;
+  transition: all .2s ease;
+  width: 100%;
+  text-align: right;
+  position: absolute;
+  line-height: 2em;
+  font-weight: bold;
+  color: #fff;
+}
+.tgl-skewed + .tgl-btn:after {
+  left: 100%;
+  content: attr(data-tg-on);
+}
+.tgl-skewed + .tgl-btn:before {
+  left: 0;
+  content: attr(data-tg-off);
+}
+.tgl-skewed + .tgl-btn:active {
+  background: #888;
+}
+.tgl-skewed + .tgl-btn:active:before {
+  left: -5%;
+}
+.tgl-skewed:checked + .tgl-btn {
+  background: #86d993;
+}
+.tgl-skewed:checked + .tgl-btn:before {
+  left: 100%;
+}
+.tgl-skewed:checked + .tgl-btn:after {
+  left: 0;
+}
+.tgl-skewed:checked + .tgl-btn:active:after {
+  left: 5%;
+}

@@ -67,9 +67,9 @@ class CreateTeamBowlersForm(forms.Form):
         cleaned_data = self.cleaned_data
         true_count = list(cleaned_data.values())
         if true_count.count(True) > 5:
-            raise forms.ValidationError("Only 3 Allrounder are Allowed")
+            raise forms.ValidationError("Only 5 Bowlers are Allowed")
         elif true_count.count(True) < 3:
-            raise forms.ValidationError("Please, Select at Least 1 Allrounder")
+            raise forms.ValidationError("Please, Select at Least 3 Bowlers")
 
     # Andre_Fletcher = models.CharField(max_length=255, default="{'Picked':False, Player_Id':1, 'Team':'India', 'Captain':False, 'Vice_Captain':False, 'Current_Points':0, 'Total_Points':0}")  # on/off,
     # Evin_Lewis = models.CharField(max_length=255, default="{'Picked':False, 'Player_Id':2, 'Team':'India', 'Captain':False, 'Vice_Captain':False, 'Current_Points':0, 'Total_Points':0}")

@@ -58,7 +58,7 @@ def CreateTeamView(request, slug):
                 try:
                     raise forms.ValidationError('Please Select only 11 Players')
                 except forms.ValidationError as e:
-                    bowlers_form.add_error(None, e)
+                    keeper_form.add_error(None, e)
                     return render(request, 'cricket_center/create_team.html', {'keeper_form': keeper_form, 'allrounders_form': allrounders_form, 'bowlers_form': bowlers_form, 'batsmen_form': batsmen_form, 'team_created': team_created})
 
             team_obj = IndiaPakistanTeam(
