@@ -2,9 +2,9 @@ from django import forms
 
 
 class CreateTeamKeeperForm(forms.Form):
-    Dinesh_Ramdin = forms.BooleanField(required=False)
-    MS_Dhoni = forms.BooleanField(required=False)
-    Dinesh_Kartik = forms.BooleanField(required=False)
+    Dinesh_Ramdin = forms.BooleanField(required=False, initial=False)
+    MS_Dhoni = forms.BooleanField(required=False, initial=False)
+    Dinesh_Kartik = forms.BooleanField(required=False, initial=False)
 
     def clean(self):
         cleaned_data = self.cleaned_data
@@ -71,6 +71,7 @@ class CreateTeamBowlersForm(forms.Form):
         elif true_count.count(True) < 3:
             raise forms.ValidationError("Please, Select at Least 3 Bowlers")
 
+# class CreateCaptainViceCaptain(forms.Form):
     # Andre_Fletcher = models.CharField(max_length=255, default="{'Picked':False, Player_Id':1, 'Team':'India', 'Captain':False, 'Vice_Captain':False, 'Current_Points':0, 'Total_Points':0}")  # on/off,
     # Evin_Lewis = models.CharField(max_length=255, default="{'Picked':False, 'Player_Id':2, 'Team':'India', 'Captain':False, 'Vice_Captain':False, 'Current_Points':0, 'Total_Points':0}")
     # Andre_Russell = models.CharField(max_length=255, default="{'Picked':False, 'Player_Id':3, 'Team':'India', 'Captain':False, 'Vice_Captain':False, 'Current_Points':0, 'Total_Points':0}")
@@ -84,4 +85,3 @@ class CreateTeamBowlersForm(forms.Form):
     # Kesrick_Williams = models.CharField(max_length=255, default="{'Picked':False, 'Player_Id':11, 'Team':'India', 'Captain':False, 'Vice_Captain':False, 'Current_Points':0, 'Total_Points':0}")
     # Chadwick_Walton = models.CharField(max_length=255, default="{'Picked':False, 'Player_Id':12, 'Team':'India', 'Captain':False, 'Vice_Captain':False, 'Current_Points':0, 'Total_Points':0}")
     # Sheldon_Cottrell = models.CharField(max_length=255, default="{'Picked':False, 'Player_Id':13, 'Team':'India', 'Captain':False, 'Vice_Captain':False, 'Current_Points':0, 'Total_Points':0}")
-

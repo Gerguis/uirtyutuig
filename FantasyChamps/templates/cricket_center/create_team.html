@@ -1,4 +1,5 @@
 {% extends "cricket_center_base.html" %}
+{% load replace_with %}
 {% load staticfiles %}
 {% load widget_tweaks %}
 {% load user_agents %}
@@ -14,16 +15,26 @@
 	</div>  
 	<div class="MatchArea">
 		{% if team_cteated%}
-            <h1>Team create</h1>
+            <h1>Team created</h1>
         {% else %}
-        	<h3>Fade in Tabs</h3>
-
 			<div class="tab">
-			  <button class="tablinks" onclick="openCity(event, 'Keepers')">Keepers</button>
+			  <button class="tablinks active" onclick="openCity(event, 'Keepers')">Keepers</button>
 			  <button class="tablinks" onclick="openCity(event, 'Batsmen')">Batsmen</button>
 			  <button class="tablinks" onclick="openCity(event, 'Allrounders')">Allrounders</button>
 			  <button class="tablinks" onclick="openCity(event, 'Bowlers')">Bowlers</button>
 			</div>
+			<div class="InfoBar">
+			  <button>Player</button>
+			  <button>Total Points</button>
+			  <button>Credit Points</button>
+			  <button>Cap/Vice</button>
+			</div>
+			<div class="alert alert-danger error" id="sub_max">
+    			
+  			</div>
+  			<div class="alert alert-danger error" id="max">
+    			
+  			</div>
 			<form method="POST">
 				<div id="Keepers" class="main_upper tabcontent">
 					{% csrf_token %}
@@ -31,51 +42,115 @@
 		            {{ keeper_form.source.errors }}
 		            {{ keeper_form.source }}
 		            {% for field in keeper_form.visible_fields %}
-            			{% render_field field|add_class:'tgl tgl-skewed' %}	
-            			<label for="{{ field.id_for_label }}" class="tgl-btn" data-tg-off = "NOT SELECTED&nbsp;&nbsp;" data-tg-on = "SELECTED&nbsp;&nbsp;">&nbsp;&nbsp;<span class="custom_field">{{field.label|title}}</span></label>
+            			{% render_field field|add_class:'CustomInput keeper' %}	
+            			<label for="{{ field.id_for_label }}" class="CustomLabel">&nbsp;&nbsp;
+            				{% for player in players_obj %}
+	            				{% if field.label|convert_to_underscore == player.player_name %}
+	            					<span class="CustomField">
+										{{player.player_current_team}} | {{field.label|title}}<br>
+		            					<small class="PlayerSubInfo">
+	            							Points : {{player.total_points}} | Bit Credit : {{player.player_credit_points}}
+	            						</small>
+	            					</span>
+	                            	<input type="radio"  name="captain" value="{{ player }}" id="{{ player|get_id_one }}" class="captain_class"/>
+								    <label for="{{ player|get_id_one }}" class="custom_cap">C</label>
+								    <input type="radio" name="vice" value="{{ player }}" id="{{ player|get_id_two }}" class="vice_class"/>
+								    <label for="{{ player|get_id_two }}" class="custom_vice">VC</label>
+	                            {% endif %}
+                            {% endfor %}
+            			</label>
 	            		{{ field.errors }}
 				    {% endfor %}
 				</div>
 
 				<div id="Batsmen" class="tabcontent">
 					{% csrf_token %}
-					 {% for field in batsmen_form.visible_fields %}
-		            	{% render_field field|add_class:'tgl tgl-skewed' %}	
-            			<label for="{{ field.id_for_label }}" class="tgl-btn" data-tg-off = "NOT SELECTED&nbsp;&nbsp;" data-tg-on = "SELECTED&nbsp;&nbsp;">&nbsp;&nbsp;<span class="custom_field">{{field.label|title}}</span></label>
+					{{ batsmen_form.non_field_errors }}
+		            {{ batsmen_form.source.errors }}
+		            {{ batsmen_form.source }}
+					{% for field in batsmen_form.visible_fields %}
+            			{% render_field field|add_class:'CustomInput batsmen' %}	
+            			<label for="{{ field.id_for_label }}" class="CustomLabel">&nbsp;&nbsp;
+            				{% for player in players_obj %}
+	            				{% if field.label|convert_to_underscore == player.player_name %}
+	            					<span class="CustomField">
+										{{player.player_current_team}} | {{field.label|title}}<br>
+		            					<small class="PlayerSubInfo">
+	            							Points : {{player.total_points}} | Bit Credit : {{player.player_credit_points}}
+	            						</small>
+	            					</span>
+	                            	<input type="radio"  name="captain" value="{{ player }}" id="{{ player|get_id_one }}" class="captain_class"/>
+								    <label for="{{ player|get_id_one }}" class="custom_cap">C</label>
+								    <input type="radio" name="vice" value="{{ player }}" id="{{ player|get_id_two }}" class="vice_class"/>
+								    <label for="{{ player|get_id_two }}" class="custom_vice">VC</label>
+	                            {% endif %}
+                            {% endfor %}
+            			</label>
 	            		{{ field.errors }}
-		            {% endfor %}
+				    {% endfor %}
 				</div>
 
 				<div id="Allrounders" class="tabcontent">
 			  		{% csrf_token %}
-					 {% for field in allrounders_form.visible_fields %}
-		            	{% render_field field|add_class:'tgl tgl-skewed' %}	
-            			<label for="{{ field.id_for_label }}" class="tgl-btn" data-tg-off = "NOT SELECTED&nbsp;&nbsp;" data-tg-on = "SELECTED&nbsp;&nbsp;">&nbsp;&nbsp;<span class="custom_field">{{field.label|title}}</span></label>
+			  		{{ allrounders_form.non_field_errors }}
+		            {{ allrounders_form.source.errors }}
+		            {{ allrounders_form.source }}
+					{% for field in allrounders_form.visible_fields %}
+            			{% render_field field|add_class:'CustomInput allrounders' %}	
+            			<label for="{{ field.id_for_label }}" class="CustomLabel">&nbsp;&nbsp;
+            				{% for player in players_obj %}
+	            				{% if field.label|convert_to_underscore == player.player_name %}
+	            					<span class="CustomField">
+										{{player.player_current_team}} | {{field.label|title}}<br>
+		            					<small class="PlayerSubInfo">
+	            							Points : {{player.total_points}} | Bit Credit : {{player.player_credit_points}}
+	            						</small>
+	            					</span>
+	                            	<input type="radio"  name="captain" value="{{ player }}" id="{{ player|get_id_one }}" class="captain_class"/>
+								    <label for="{{ player|get_id_one }}" class="custom_cap">C</label>
+								    <input type="radio" name="vice" value="{{ player }}" id="{{ player|get_id_two }}" class="vice_class"/>
+								    <label for="{{ player|get_id_two }}" class="custom_vice">VC</label>
+	                            {% endif %}
+                            {% endfor %}
+            			</label>
 	            		{{ field.errors }}
-		            {% endfor %}
+				    {% endfor %}
 				</div>
     
     			<div id="Bowlers" class="tabcontent">
 			  		{% csrf_token %}
-					 {% for field in bowlers_form.visible_fields %}
-		            	{% render_field field|add_class:'tgl tgl-skewed' %}	
-            			<label for="{{ field.id_for_label }}" class="tgl-btn" data-tg-off = "NOT SELECTED&nbsp;&nbsp;" data-tg-on = "SELECTED&nbsp;&nbsp;">&nbsp;&nbsp;<span class="custom_field">{{field.label|title}}</span></label>
+			  		{{ bowlers_form.non_field_errors }}
+		            {{ bowlers_form.source.errors }}
+		            {{ bowlers_form.source }}
+					{% for field in bowlers_form.visible_fields %}
+            			{% render_field field|add_class:'CustomInput bowlers' %}	
+            			<label for="{{ field.id_for_label }}" class="CustomLabel">&nbsp;&nbsp;
+            				{% for player in players_obj %}
+	            				{% if field.label|convert_to_underscore == player.player_name %}
+	            					<span class="CustomField">
+										{{player.player_current_team}} | {{field.label|title}}<br>
+		            					<small class="PlayerSubInfo">
+	            							Points : {{player.total_points}} | Bit Credit : {{player.player_credit_points}}
+	            						</small>
+	            					</span>
+	                            	<input type="radio"  name="captain" value="{{ player }}" id="{{ player|get_id_one }}" class="captain_class"/>
+								    <label for="{{ player|get_id_one }}" class="custom_cap">C</label>
+								    <input type="radio" name="vice" value="{{ player }}" id="{{ player|get_id_two }}" class="vice_class"/>
+								    <label for="{{ player|get_id_two }}" class="custom_vice">VC</label>
+	                            {% endif %}
+                            {% endfor %}
+            			</label>
 	            		{{ field.errors }}
-		            {% endfor %}
+				    {% endfor %}
 				</div>
 
 				<div class="ButtonContainer">
 	              <center><input class="btn btn-success btn-sm" type="submit" name="submit" id="signup" value="Create Team"></center>
 	            </div>
 			</form>
-
-
-
-
-
         {% endif %}        	
 	</div>
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
 	function openCity(evt, cityName) {
 	    var i, tabcontent, tablinks;
@@ -90,8 +165,221 @@
 	    document.getElementById(cityName).style.display = "block";
 	    evt.currentTarget.className += " active";
 	}
-	</script>
+	
+	$(document).ready(function () {
+	    resetForms();
+	});
 
+	function resetForms() {
+		// console.log("I have been Called.")
+	    for (i = 0; i < document.forms.length; i++) {
+	        document.forms[i].reset();
+	    }
+	}
+
+	global_keeper_count = 0;
+	global_batsmen_count = 0;
+	global_bowler_count = 0;
+	global_allrounder_count = 0;
+	$('.btn-sm').click(function(event){
+		players_input = $('.CustomInput');
+		var players_count = 0;
+		for(var i = 0; i < players_input.length; i++){
+			if($(players_input[i]).is(':checked')){
+ 		   	  players_count = players_count+1;
+ 		   	  console.log(players_count)
+ 		    }
+		}
+		if(players_count<11){
+			event.preventDefault();	
+			$(this).prop( "checked", false );
+			$('#sub_max').css('display','block');
+			$('#sub_max').html("Please Select At Least <strong>11 Players</strong>");
+			$('#sub_max').delay(3000).fadeOut(1000);
+		}
+		else if(global_keeper_count<1){
+			event.preventDefault();	
+			$(this).prop( "checked", false );
+			$('#sub_max').css('display','block');
+			$('#sub_max').html("Please Select At Least <strong>1 Keeeper</strong>");
+			$('#sub_max').delay(3000).fadeOut(1000);
+		}
+		else if(global_batsmen_count<3){
+			event.preventDefault();	
+			$(this).prop( "checked", false );
+			$('#sub_max').css('display','block');
+			$('#sub_max').html("Please Select At Least <strong>3 Batsmen</strong>");
+			$('#sub_max').delay(3000).fadeOut(1000);
+		}
+		else if(global_allrounder_count<1){
+			event.preventDefault();	
+			$(this).prop( "checked", false );
+			$('#sub_max').css('display','block');
+			$('#sub_max').html("Please Select At Least <strong>1 Allrounder</strong>");
+			$('#sub_max').delay(3000).fadeOut(1000);
+		}
+		else if(global_bowler_count<3){
+			event.preventDefault();	
+			$(this).prop( "checked", false );
+			$('#sub_max').css('display','block');
+			$('#sub_max').html("Please Select At Least <strong>3 Bowlers</strong>");
+			$('#sub_max').delay(3000).fadeOut(1000);
+		}
+		else if(!$('.captain_class').is(':checked')){
+			if(!$('.vice_class').is(':checked')){
+				event.preventDefault();	
+				$(this).prop( "checked", false );
+				$('#sub_max').css('display','block');
+				$('#sub_max').html("Please Select Your <strong>Captain and Vice Captain</strong>");
+				$('#sub_max').delay(3000).fadeOut(1000);	
+			}
+		}
+		else if(!$('.captain_class').is(':checked')){
+			event.preventDefault();	
+			$(this).prop( "checked", false );
+			$('#sub_max').css('display','block');
+			$('#sub_max').html("Please Select Your <strong>Captain</strong>");
+			$('#sub_max').delay(3000).fadeOut(1000);	
+		}
+
+		else if(!$('.vice_class').is(':checked')){
+			event.preventDefault();	
+			$(this).prop( "checked", false );
+			$('#sub_max').css('display','block');
+			$('#sub_max').html("Please Select Your <strong>Vice Captain</strong>");
+			$('#sub_max').delay(3000).fadeOut(1000);	
+		}
+		
+		console.log("Global Keeeper Count : "+global_keeper_count)
+		console.log("Global Batsmen Count : "+global_batsmen_count)
+	})
+
+	/*For Checkong Purpose*/
+	$('.keeper').click(function(){
+		var keeper_inputs = $('.keeper');
+		players_input = $('.CustomInput')
+		global_keeper_count = 0;
+		var players_count = 0;
+		for(var i = 0; i < keeper_inputs.length; i++){
+			if($(keeper_inputs[i]).is(':checked')){
+ 		   	  global_keeper_count = global_keeper_count+1;
+ 		    }
+		}
+		for(var i = 0; i < players_input.length; i++){
+			if($(players_input[i]).is(':checked')){
+ 		   	  players_count = players_count+1;
+ 		    }
+		}
+		if(global_keeper_count>1){
+			$(this).prop( "checked", false );
+			$('#sub_max').css('display','block');
+			$('#sub_max').html("Please Select Only <strong>One Keeeper</strong>");
+			$('#sub_max').delay(3000).fadeOut(1000);
+		}
+
+		if (players_count>11){
+			$(this).prop( "checked", false );
+			$('#max').css('display','block');
+			$('#max').html("Please Select Only <strong>11 Players</strong>");
+			$('#max').delay(3000).fadeOut(1000);	
+		}
+	});
+
+
+	$('.batsmen').click(function(){
+		var batsmen_inputs = $('.batsmen');
+		players_input = $('.CustomInput')
+		global_batsmen_count = 0;
+		var players_count = 0;
+		for(var i = 0; i < batsmen_inputs.length; i++){
+			if($(batsmen_inputs[i]).is(':checked')){
+ 		   	  global_batsmen_count = global_batsmen_count+1;
+ 		   	  console.log(global_batsmen_count)
+ 		    }
+		}
+
+		for(var i = 0; i < players_input.length; i++){
+			if($(players_input[i]).is(':checked')){
+ 		   	  players_count = players_count+1;
+ 		   	  console.log(players_count)
+ 		    }
+		}
+
+		if(global_batsmen_count>5){
+			$(this).prop( "checked", false );
+			$('#sub_max').css('display','block');
+			$('#sub_max').html("Please Select Only <strong>5 Batsmen</strong>");
+			$('#sub_max').delay(3000).fadeOut(1000);
+		}
+
+		if (players_count>11){
+			$(this).prop( "checked", false );
+			$('#max').css('display','block');
+			$('#max').html("Please Select Only <strong>11 Players</strong>");
+			$('#max').delay(3000).fadeOut(1000);	
+		}
+	});
+
+$('.allrounders').click(function(){
+		var allrounder_inputs = $('.allrounders');
+		players_input = $('.CustomInput')
+		global_allrounder_count = 0;
+		var players_count = 0;
+		for(var i = 0; i < allrounder_inputs.length; i++){
+			if($(allrounder_inputs[i]).is(':checked')){
+ 		   	  global_allrounder_count = global_allrounder_count+1;
+ 		    }
+		}
+		for(var i = 0; i < players_input.length; i++){
+			if($(players_input[i]).is(':checked')){
+ 		   	  players_count = players_count+1;
+ 		    }
+		}
+		if(global_allrounder_count>3){
+			$(this).prop( "checked", false );
+			$('#sub_max').css('display','block');
+			$('#sub_max').html("Please Select Only <strong>3 Allrounders</strong>");
+			$('#sub_max').delay(3000).fadeOut(1000);
+		}
+
+		if (players_count>11){
+			$(this).prop( "checked", false );
+			$('#max').css('display','block');
+			$('#max').html("Please Select Only <strong>11 Players</strong>");
+			$('#max').delay(3000).fadeOut(1000);	
+		}
+	});
+
+$('.bowlers').click(function(){
+		var bowler_inputs = $('.bowlers');
+		players_input = $('.CustomInput')
+		global_bowler_count = 0;
+		var players_count = 0;
+		for(var i = 0; i < bowler_inputs.length; i++){
+			if($(bowler_inputs[i]).is(':checked')){
+ 		   	  global_bowler_count = global_bowler_count+1;
+ 		    }
+		}
+		for(var i = 0; i < players_input.length; i++){
+			if($(players_input[i]).is(':checked')){
+ 		   	  players_count = players_count+1;
+ 		    }
+		}
+		if(global_bowler_count>5){
+			$(this).prop( "checked", false );
+			$('#sub_max').css('display','block');
+			$('#sub_max').html("Please Select Only <strong>5 Bowlers</strong>");
+			$('#sub_max').delay(3000).fadeOut(1000);
+		}
+
+		if (players_count>11){
+			$(this).prop( "checked", false );
+			$('#max').css('display','block');
+			$('#max').html("Please Select Only <strong>11 Players</strong>");
+			$('#max').delay(3000).fadeOut(1000);	
+		}
+	});
+	</script>
 
 {% endblock %}
 

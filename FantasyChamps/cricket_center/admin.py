@@ -5,3 +5,4 @@ from . import models
 
 admin.site.register(models.MatchDetail)
 admin.site.register(models.IndiaPakistanTeam)
+admin.site.register(models.PlayerDetail)

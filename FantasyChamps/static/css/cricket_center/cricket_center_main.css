@@ -265,31 +265,6 @@ body
   transform: translateX(-50%);
 }
 
-/*****On Smaller Devices*****/
-@media (max-width: 580px) {
-  .nav{
-    width: 100%;
-  }
-  .MatchArea{
-    width:100%;
-  }
-  .MatchBetween h4{
-    font-size: 15px; 
-  }
-  .MatchBetween h6{
-    font-size: 10px;
-  }
-  .MatchArea h3{
-    font-size: 20px;
-  }
-  .MatchInfoCard{
-    position: relative;
-    top:2px;
-  }
-  .LeagueCard h4{
-    font-size: 14px;
-  }
-}
 
 /*****Match League*****/
 .LeagueImage{
@@ -435,18 +410,45 @@ body
 
 
 
-
 /***Custom CSS for checkboxes***/
-.custom_field{
-  position: absolute;
-  top: 4px;
-  font-size: 16px;
-  color: white;
+
+
+.InfoBar{
+  margin-top: 5px;
+  height: 40px;
+  width: 100%;
+  background-color: red;
 }
 
+/*.custom_cap{
+  position: relative;
+  left: 67%;
+}
+
+.custom_vice{
+  position: relative;
+  left: 65%;
+}
+*/
+.tablinks{
+  width: 25%;
+}
+
+.info_bar{
+  display: inline;
+}
+
+/*.li_cont{
+  white-space:nowrap;
+}
 
 .tgl {
   display: none;
+}
+
+.tgl-btn{
+  height:10%  !important;
+  width:100%  !important;
 }
 
 .tgl::-moz-selection, .tgl:after::-moz-selection, .tgl:before::-moz-selection, .tgl *::-moz-selection, .tgl *:after::-moz-selection, .tgl *:before::-moz-selection, .tgl + .tgl-btn::-moz-selection {
@@ -495,14 +497,6 @@ body
   font-weight: bold;
   color: #fff;
 }
-.tgl-skewed + .tgl-btn:after {
-  left: 100%;
-  content: attr(data-tg-on);
-}
-.tgl-skewed + .tgl-btn:before {
-  left: 0;
-  content: attr(data-tg-off);
-}
 .tgl-skewed + .tgl-btn:active {
   background: #888;
 }
@@ -521,3 +515,188 @@ body
 .tgl-skewed:checked + .tgl-btn:active:after {
   left: 5%;
 }
+*/
+/*
+  Hide radio button (the round disc)
+  we will use just the label to create pushbutton effect
+*/
+/*input[type=radio] {
+    display:none; 
+}
+*/ 
+/*
+  Change the look'n'feel of labels (which are adjacent to radiobuttons).
+*/
+/*input[type=radio] + label {
+    display:inline-block; /*So we can use vertical-align*/
+/*    width:35px;
+    height:35px;
+    text-align:center;
+    color:red;
+    font-weight:bold;
+    top:4px;
+    font-size:18px;
+}
+input[type=radio]:checked + label {
+    color:black;
+}
+*/
+
+
+
+
+
+/*Test AJAX*/
+
+.error{
+  display: none;  
+}
+
+/*.custom_cap_vice{
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  vertical-align: center;
+  width: 5%;
+  height: 90%;
+  top:5%;
+}
+
+.cap_vice_center{
+  position: relative;
+  transform: translateY(-50%);
+}*/
+
+
+
+
+
+
+/***************ALL NEW CONTENT*****************/
+.CustomInput{
+  display: none;
+}
+
+.CustomLabel{
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  height: 50px  !important;
+  background-color: #EC7063;
+}
+
+.NonCustomLabel{
+  background-color: green;
+}
+
+.CustomField{
+  position: relative;
+  top: 4px;
+  font-size: 16px;
+  color: white;
+}
+
+.PlayerSubInfo{
+  position: relative;
+  top: -6px  !important;
+  left: 10px;
+  color:white;/*ff4f8b;*/
+}
+
+.CustomInput:checked + label {
+  background-color: green;
+}
+
+.captain_class, .custom_cap, .vice_class, .custom_vice{
+  display: none;
+}
+
+.CustomInput:checked + label input{
+  display: inline-block;
+  position: relative;
+  top:-20%;
+  left: 40%;
+  margin-left: 20px;
+}
+
+.CustomInput:checked + label label{
+  display: inline-block;
+  position: relative;
+  top:-20%;
+  left: 40%;
+  margin-left: 0px;
+}
+
+/*****On Smaller Devices*****/
+@media (max-width: 580px) {
+  .nav{
+    width: 100%;
+  }
+  .MatchArea{
+    width:100%;
+  }
+  .MatchBetween h4{
+    font-size: 15px; 
+  }
+  .MatchBetween h6{
+    font-size: 10px;
+  }
+  .MatchArea h3{
+    font-size: 20px;
+  }
+  .MatchInfoCard{
+    position: relative;
+    top:2px;
+  }
+  .LeagueCard h4{
+    font-size: 14px;
+  }
+  .custom_field {
+    font-size: 14px  !important;
+    top:5px  !important;
+  }
+  .custom_cap{
+    position: relative;
+    left: 65%;
+  }
+
+  .custom_vice{
+    position: relative;
+    left: 63%;
+  }
+
+  .CustomLabel{
+    height: 40px  !important;
+  }
+
+  .CustomField{
+    top: 0px;
+    font-size: 12px;
+  }
+
+  .PlayerSubInfo{
+    top: -13px  !important;
+  }
+  .CustomInput:checked + label input{
+    top:-40%;
+    left: 20%;
+    margin-left: 20px;
+  }
+
+  .CustomInput:checked + label label{
+    top:-40%;
+    left: 20%;
+    margin-left: 0px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
