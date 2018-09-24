@@ -777,7 +777,9 @@ input[type=radio]:checked + label {
 .TeamPreviewContainer{
   position: fixed;
   width: 580px;
-  height: 100%;
+  height: -moz-calc(100vh - 50px);
+  height: -webkit-calc(100vh - 50px);
+  height: calc(100vh - 100px);
   z-index: 1;
   display: none;
   background-color: #3EBAEE;
