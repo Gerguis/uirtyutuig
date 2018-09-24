@@ -1,4 +1,18 @@
 /*****Match Area*****/
+.MatchAreaForMatch{
+  position: relative;
+  display: inline-block;
+  width: 580px;
+  display: inline-block;
+  height: -moz-calc(100vh - 100px);
+  height: -webkit-calc(100vh - 100px);
+  height: calc(100vh - 100px);
+  overflow-x: auto;
+  left: 0%;
+  background-color: #ccc;
+  background-size: cover;
+}
+
 .MatchArea{
   width: 580px;
   position: relative;
@@ -413,12 +427,6 @@ body
 /***Custom CSS for checkboxes***/
 
 
-.InfoBar{
-  margin-top: 5px;
-  height: 40px;
-  width: 100%;
-  background-color: red;
-}
 
 /*.custom_cap{
   position: relative;
@@ -611,28 +619,320 @@ input[type=radio]:checked + label {
   display: none;
 }
 
+.custom_cap, .custom_vice{
+  position: relative;
+  width:35px;
+  height: 35px;
+  top:-16px;
+  left: 50%;
+  background-color: yellow;
+  border-radius: 50%;
+  margin-left: 10px;
+  text-align: center;
+  font-size: 16px;
+  color:red;
+  cursor: pointer;
+}
+
+.custom_text{
+  position: relative;
+  top: 5px;
+}
+
+.captain_class:checked + label{
+  color:green;
+}
+
+.vice_class:checked + label{
+  color:green;
+}
+
+/*
 .CustomInput:checked + label input{
   display: inline-block;
   position: relative;
   top:-20%;
   left: 40%;
   margin-left: 20px;
-}
+}*/
 
 .CustomInput:checked + label label{
   display: inline-block;
-  position: relative;
-  top:-20%;
-  left: 40%;
-  margin-left: 0px;
 }
 
+.ButtonContainer{
+  position: fixed;
+  width: 580px;
+  height: 40px;
+  bottom: 0%;
+  background-color: red;
+}
+
+.btn-sm{
+  height: 40px;
+}
+
+.footer{
+  position: fixed;
+  display: inline-block;
+  width: 580px;
+  height: 50px;
+  bottom: 0%;
+  background-color: red; 
+}
+
+.TeamPreviewClass{
+  position:relative; 
+  background-color: #ff4f8b  !important;
+  border-color: #ff4f8b  !important;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 3px;
+  color:#fff;
+  width: 120px;
+  top:10%;
+  height: 80%;
+  float: left;
+  left:5px;
+}
+
+.CreateTeam{
+  position:relative; 
+  background-color: #ff4f8b  !important;
+  border-color: #ff4f8b  !important;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 3px;
+  color:#fff;
+  width: 120px;
+  top:10%;
+  height: 80%;
+  float: right;
+  left:-15px; 
+}
+
+.FooterInfoRight{
+  position: relative;
+  display: inline-block;
+  background-color: #ff4f8b  !important;
+  border-color: #ff4f8b  !important;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 6px 12px;
+  color:#fff;
+  width: 285px;
+  top:10%;
+  float: right;
+  margin-right: 5px;
+  height: 80%;
+}
+
+.FooterInfoLeft{
+  position: relative;
+  display: inline-block;
+  background-color: #ff4f8b  !important;
+  border-color: #ff4f8b  !important;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 6px 12px;
+  color:#fff;
+  width: 280px;
+  float: left;
+  margin-left: 5px;
+  top:10%;
+  height: 80%;
+}
+
+.HrSeparatorOfInfoBar{
+  position: relative;
+  width: 94%;
+  top:-20px;
+}
+
+.JoinNowContainer{
+  position: fixed;
+  width: 580px;
+  height: 100%;
+  z-index: 1;
+  display: none;
+  background: rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+}
+
+.PlayerView{
+  display: inline-block;
+  position: relative;
+  word-wrap: break-word;
+  vertical-align: top;
+}
+
+.PlayerNameView {
+  word-wrap: break-word;
+  display: block;
+  word-break: keep-all;
+  -ms-word-wrap: break-word;
+  -ms-word-break: break-word;
+}
+
+.TeamPreviewContainer{
+  position: fixed;
+  width: 580px;
+  height: 100%;
+  z-index: 1;
+  display: none;
+  background-color: #3EBAEE;
+  white-space: nowrap;
+  font-size: 15px;
+}
+  
+.player_image{
+  width: 50px;
+  height: 50px;
+  overflow-wrap: break-word;
+  display:block;
+}
+
+.AllPlayers{
+  position: relative;
+  height: 100%;
+}
+
+.PlayerView{
+  display: inline-block;
+  position: relative;
+  margin-top: 0px;
+  height:20%;
+  color:white;
+  text-align: center;
+}
+
+.KeepersPreview, .BatsmenPreview, .AllrounderPreview, .BowlerPreview{
+  position: relative;
+  height: 17%  !important;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.JoinNowRealDiv{
+  position: absolute;
+  background-color: red;
+  bottom:100px;
+  width:580px;
+  z-index:2;
+}
+
+.CloseJoinNowContainer{
+  position: relative;
+  font-size:24px;
+  top:8px;
+  width:100%;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.CloseTeamPreviewContainer{
+  position: relative;
+  font-size:24px  top:8px;
+  width:100%;
+  cursor: pointer;
+  display: inline-block;
+}
+
+
+.JoinNowHeader{
+  position: relative;
+  top:13px;
+  display: inline-block;
+}
+
+.PayAndJoinNow
+{
+  background-color: #ff4f8b  !important;
+  border-color: #ff4f8b  !important;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 6px 12px;
+  color:#fff
+  text-align:center;
+}
+
+/*@media (min-width: 581px){
+  .custom_cap, .custom_vice{
+    left:50%;
+  }
+}
+*/
+
 /*****On Smaller Devices*****/
-@media (max-width: 580px) {
+@media (min-width: 101px) and (max-width: 401px) {
+
+  .PlayerSubInfo{
+    position: relative;
+    top: -10px  !important;
+    left: 10px;
+    color:white;/*ff4f8b;*/
+  }
+
+  .PlayerView{
+    display: inline-block;
+    position: relative;
+    word-wrap: break-word;
+    vertical-align: top;
+  }
+
+  .PlayerNameView {
+    word-wrap: break-word;
+    display: block;
+    word-break: keep-all;
+    -ms-word-wrap: break-word;
+    -ms-word-break: break-word;
+  }
+
+  .TeamPreviewContainer{
+    width: 100%;
+    font-size: 12px;
+    bottom: 0px;
+    word-break: break-all;
+    white-space: normal;
+  }
+  
+  .player_image{
+    width: 30px;
+    height: 30px;
+  }
+
+  .custom_cap, .custom_vice{
+    left:30%  !important;
+    width:26px;
+    height: 26px;
+    top:-19px  !important;
+    font-size: 14px;
+  }
+
+  .custom_text{
+    position: relative;
+    top: 2px;
+  }
+
+  .FooterInfoLeft{
+    padding: 3px 6px;
+    width: 46%;
+    font-size: 14px;
+  }
+
+  .FooterInfoRight{
+    padding: 3px 6px;
+    width: 50%;
+    font-size: 14px;
+  }
+
   .nav{
     width: 100%;
   }
   .MatchArea{
+    width:100%;
+  }
+  .MatchAreaForMatch{
     width:100%;
   }
   .MatchBetween h4{
@@ -655,15 +955,6 @@ input[type=radio]:checked + label {
     font-size: 14px  !important;
     top:5px  !important;
   }
-  .custom_cap{
-    position: relative;
-    left: 65%;
-  }
-
-  .custom_vice{
-    position: relative;
-    left: 63%;
-  }
 
   .CustomLabel{
     height: 40px  !important;
@@ -674,9 +965,6 @@ input[type=radio]:checked + label {
     font-size: 12px;
   }
 
-  .PlayerSubInfo{
-    top: -13px  !important;
-  }
   .CustomInput:checked + label input{
     top:-40%;
     left: 20%;
@@ -688,8 +976,155 @@ input[type=radio]:checked + label {
     left: 20%;
     margin-left: 0px;
   }
+  .ButtonContainer{
+    width: 100%;
+  }
+  .footer{
+    width: 100%;
+    height: 40px; 
+  }
+  .JoinNowContainer{
+    width: 100%;
+  }
+  .JoinNowRealDiv{
+    width: 100%;
+  }
 }
 
+@media (min-width: 401px) and (max-width: 580px) {
+  .PlayerSubInfo{
+    position: relative;
+    top: -10px  !important;
+    left: 10px;
+    color:white;/*ff4f8b;*/
+  }
+
+  .PlayerView{
+    display: inline-block;
+    position: relative;
+    word-wrap: break-word;
+    vertical-align: top;
+  }
+
+  .PlayerNameView {
+    word-wrap: break-word;
+    display: block;
+    word-break: keep-all;
+    -ms-word-wrap: break-word;
+    -ms-word-break: break-word;
+  }
+
+  .TeamPreviewContainer{
+    width: 100%;
+    font-size: 14px;
+    bottom: 0px;
+    word-break: break-all;
+    white-space: normal;
+  }
+  
+  .player_image{
+    width: 40px;
+    height: 40px;
+  }
+
+  .custom_cap, .custom_vice{
+    left:50%  !important;
+    width:30px;
+    height: 30px;
+    top:-20px  !important;
+    font-size: 15px;
+  }
+
+  .custom_text{
+    position: relative;
+    top: 4px;
+  }
+
+  .FooterInfoLeft{
+    padding: 3px 6px;
+    width: 46%;
+    font-size: 14px;
+  }
+
+  .FooterInfoRight{
+    padding: 3px 6px;
+    width: 50%;
+    font-size: 14px;
+  }
+
+  .nav{
+    width: 100%;
+  }
+  .MatchArea{
+    width:100%;
+  }
+  .MatchAreaForMatch{
+    width:100%;
+  }
+  .MatchBetween h4{
+    font-size: 15px; 
+  }
+  .MatchBetween h6{
+    font-size: 10px;
+  }
+  .MatchArea h3{
+    font-size: 20px;
+  }
+  .MatchInfoCard{
+    position: relative;
+    top:2px;
+  }
+  .LeagueCard h4{
+    font-size: 14px;
+  }
+  .custom_field {
+    font-size: 14px  !important;
+    top:5px  !important;
+  }
+
+  .CustomLabel{
+    height: 40px  !important;
+  }
+
+  .CustomField{
+    top: 0px;
+    font-size: 12px;
+  }
+
+  .CustomInput:checked + label input{
+    top:-40%;
+    left: 20%;
+    margin-left: 20px;
+  }
+
+  .CustomInput:checked + label label{
+    top:-40%;
+    left: 20%;
+    margin-left: 0px;
+  }
+  .ButtonContainer{
+    width: 100%;
+  }
+  .footer{
+    width: 100%;
+    height: 40px; 
+  }
+  .JoinNowContainer{
+    width: 100%;
+  }
+  .JoinNowRealDiv{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:480px){
+  h1 { font-size: 6.5vw; }
+  h2 { font-size: 6vw; }
+  h3 { font-size: 5.5vw; }
+  h4 { font-size: 5vw; }
+  h5 { font-size: 4.5vw; }
+  h6 { font-size: 3.5vw; }
+}
 
 
 

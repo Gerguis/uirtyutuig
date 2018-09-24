@@ -12,7 +12,7 @@ def handler404(request):
     return HttpResponseRedirect(reverse('IndexView'))
 
 
-@login_required
+@login_required(login_url='IndexView')
 def UserLogoutView(request):
     logout(request)
     return HttpResponseRedirect(reverse('IndexView'))

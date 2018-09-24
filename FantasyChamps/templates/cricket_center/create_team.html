@@ -14,7 +14,19 @@
 	  <div class="color-overlay"></div>
 	</div>  
 	<div class="MatchArea">
-		{% if team_cteated%}
+		<div class="TeamPreviewContainer">	
+			<center>
+				<i class="fa fa-chevron-circle-down CloseTeamPreviewContainer"></i>
+				<hr style="width:80%">
+			</center>
+			<div class="AllPlayers">
+				<div class="KeepersPreview"></div>
+				<div class="BatsmenPreview"></div>
+				<div class="AllrounderPreview"></div>
+				<div class="BowlerPreview"></div>
+			</div>
+		</div>
+		{% if team%}
             <h1>Team created</h1>
         {% else %}
 			<div class="tab">
@@ -22,12 +34,6 @@
 			  <button class="tablinks" onclick="openCity(event, 'Batsmen')">Batsmen</button>
 			  <button class="tablinks" onclick="openCity(event, 'Allrounders')">Allrounders</button>
 			  <button class="tablinks" onclick="openCity(event, 'Bowlers')">Bowlers</button>
-			</div>
-			<div class="InfoBar">
-			  <button>Player</button>
-			  <button>Total Points</button>
-			  <button>Credit Points</button>
-			  <button>Cap/Vice</button>
 			</div>
 			<div class="alert alert-danger error" id="sub_max">
     			
@@ -52,10 +58,10 @@
 	            							Points : {{player.total_points}} | Bit Credit : {{player.player_credit_points}}
 	            						</small>
 	            					</span>
-	                            	<input type="radio"  name="captain" value="{{ player }}" id="{{ player|get_id_one }}" class="captain_class"/>
-								    <label for="{{ player|get_id_one }}" class="custom_cap">C</label>
-								    <input type="radio" name="vice" value="{{ player }}" id="{{ player|get_id_two }}" class="vice_class"/>
-								    <label for="{{ player|get_id_two }}" class="custom_vice">VC</label>
+	                            	<input type="checkbox"  name="captain" value="{{ player }}" id="{{ player|get_id_one }}" class="captain_class"/>
+								    <label for="{{ player|get_id_one }}" class="custom_cap"><span class="custom_text">C</span></label>
+								    <input type="checkbox" name="vice" value="{{ player }}" id="{{ player|get_id_two }}" class="vice_class"/>
+								    <label for="{{ player|get_id_two }}" class="custom_vice"><span class="custom_text">VC</span></label>
 	                            {% endif %}
                             {% endfor %}
             			</label>
@@ -79,10 +85,10 @@
 	            							Points : {{player.total_points}} | Bit Credit : {{player.player_credit_points}}
 	            						</small>
 	            					</span>
-	                            	<input type="radio"  name="captain" value="{{ player }}" id="{{ player|get_id_one }}" class="captain_class"/>
-								    <label for="{{ player|get_id_one }}" class="custom_cap">C</label>
-								    <input type="radio" name="vice" value="{{ player }}" id="{{ player|get_id_two }}" class="vice_class"/>
-								    <label for="{{ player|get_id_two }}" class="custom_vice">VC</label>
+	            					<input type="checkbox"  name="captain" value="{{ player }}" id="{{ player|get_id_one }}" class="captain_class"/>
+								    <label for="{{ player|get_id_one }}" class="custom_cap"><span class="custom_text">C</span></label>
+								    <input type="checkbox" name="vice" value="{{ player }}" id="{{ player|get_id_two }}" class="vice_class"/>
+								    <label for="{{ player|get_id_two }}" class="custom_vice"><span class="custom_text">VC</span></label>
 	                            {% endif %}
                             {% endfor %}
             			</label>
@@ -106,10 +112,10 @@
 	            							Points : {{player.total_points}} | Bit Credit : {{player.player_credit_points}}
 	            						</small>
 	            					</span>
-	                            	<input type="radio"  name="captain" value="{{ player }}" id="{{ player|get_id_one }}" class="captain_class"/>
-								    <label for="{{ player|get_id_one }}" class="custom_cap">C</label>
-								    <input type="radio" name="vice" value="{{ player }}" id="{{ player|get_id_two }}" class="vice_class"/>
-								    <label for="{{ player|get_id_two }}" class="custom_vice">VC</label>
+	                            	<input type="checkbox"  name="captain" value="{{ player }}" id="{{ player|get_id_one }}" class="captain_class"/>
+								    <label for="{{ player|get_id_one }}" class="custom_cap"><span class="custom_text">C</span></label>
+								    <input type="checkbox" name="vice" value="{{ player }}" id="{{ player|get_id_two }}" class="vice_class"/>
+								    <label for="{{ player|get_id_two }}" class="custom_vice"><span class="custom_text">VC</span></label>
 	                            {% endif %}
                             {% endfor %}
             			</label>
@@ -133,25 +139,244 @@
 	            							Points : {{player.total_points}} | Bit Credit : {{player.player_credit_points}}
 	            						</small>
 	            					</span>
-	                            	<input type="radio"  name="captain" value="{{ player }}" id="{{ player|get_id_one }}" class="captain_class"/>
-								    <label for="{{ player|get_id_one }}" class="custom_cap">C</label>
-								    <input type="radio" name="vice" value="{{ player }}" id="{{ player|get_id_two }}" class="vice_class"/>
-								    <label for="{{ player|get_id_two }}" class="custom_vice">VC</label>
+	                            	<input type="checkbox"  name="captain" value="{{ player }}" id="{{ player|get_id_one }}" class="captain_class"/>
+								    <label for="{{ player|get_id_one }}" class="custom_cap"><span class="custom_text">C</span></label>
+								    <input type="checkbox" name="vice" value="{{ player }}" id="{{ player|get_id_two }}" class="vice_class"/>
+								    <label for="{{ player|get_id_two }}" class="custom_vice"><span class="custom_text">VC</span></label>
 	                            {% endif %}
                             {% endfor %}
             			</label>
 	            		{{ field.errors }}
 				    {% endfor %}
 				</div>
-
+				<br><div style="position:relative; width:100%; height:10px;"></div>
 				<div class="ButtonContainer">
-	              <center><input class="btn btn-success btn-sm" type="submit" name="submit" id="signup" value="Create Team"></center>
+				  <div class="btn btn-success TeamPreviewClass">Team Preview</div>
+				  <input class="btn btn-success btn-sm CreateTeam" type="submit" name="submit" id="signup" value="Create Team" style="float:right; right:20px;">
 	            </div>
 			</form>
         {% endif %}        	
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
+	$(".CloseTeamPreviewContainer").click(function () {
+	    var div = $(".TeamPreviewContainer");
+	    
+	    var height = div.height();
+	    
+	    div.css({
+	        overflow: "hidden",
+	        marginTop: 0,
+	        height: height
+	    }).animate({
+	        marginTop: height,
+	        height: 0
+	    }, 500, function () {
+	        $(this).css({
+	            display: "none",
+	            overflow: "",
+	            height: "",
+	            marginTop: ""
+	        });
+	    });
+	});
+
+	$('.TeamPreviewClass').click(function () {
+		selected_keepers = $('.keeper:checkbox:checked')
+		selected_batsmen = $('.batsmen:checkbox:checked')
+		selected_allrounders = $('.allrounders:checkbox:checked')
+		selected_bowlers = $('.bowlers:checkbox:checked')
+		if (selected_keepers.length == 1){
+			var name_array = selected_keepers[0].name.split('_')
+			KeepersDivWidth = 100/selected_keepers.length+"%"
+			$(".KeepersPreview").html("<div class=\"PlayerView\" style=\"position:relative; margin-top:0px; width: " + KeepersDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/keeper.png" %}\"></center>" + name_array[0] + " " + name_array[1] + "</div>")
+		}
+		else{
+			$(".KeepersPreview").html("<center><div class=\"PlayerView\" style=\"width: 100%\">No Keepers Selected</div></center>")
+		}
+		if (selected_batsmen.length == 1){
+			var name_array = selected_batsmen[0].name.split('_')
+			BatsmenDivWidth = 100/selected_batsmen.length+"%"
+			$(".BatsmenPreview").html("<div class=\"PlayerView\" style=\"width: " + BatsmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center><span class=\"PlayerNameView\">" + name_array[0] + " " + name_array[1] + "</span></div>")
+		}
+		else{
+			$(".BatsmenPreview").html("<center><div class=\"PlayerView\" style=\"width: 100%; display:inline-block; vertical-align:middle;\">No Batsman Selected</div></center>")	
+		}
+		if (selected_batsmen.length === 2){
+			BatsmenDivWidth = 100/selected_batsmen.length+"%"
+			$(".BatsmenPreview").html("")
+			for(var i=0; i<2; i++){
+				var name_array = selected_batsmen[i].name.split('_')
+				// var name = name_array[0] + ' ' + name_array[1]
+				$(".BatsmenPreview").append("<div class=\"PlayerView\" style=\"width: " + BatsmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center><span class=\"PlayerNameView\">" + name_array[0] + " " + name_array[1] + "</span></div>")
+			}
+		}
+		if (selected_batsmen.length === 3){
+			BatsmenDivWidth = 100/selected_batsmen.length+"%"
+			$(".BatsmenPreview").html("")
+			for(var i=0; i<3; i++){
+				var name_array = selected_batsmen[i].name.split('_')
+				$(".BatsmenPreview").append("<div class=\"PlayerView\" style=\"width: " + BatsmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center><span class=\"PlayerNameView\">" + name_array[0] + " " + name_array[1] + "</span></div>")
+			}
+		}
+		if (selected_batsmen.length === 4){
+			BatsmenDivWidth = 100/selected_batsmen.length+"%"
+			$(".BatsmenPreview").html("")
+			for(var i=0; i<4; i++){
+				var name_array = selected_batsmen[i].name.split('_')
+				$(".BatsmenPreview").append("<div class=\"PlayerView\" style=\"width: " + BatsmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center><span class=\"PlayerNameView\">" + name_array[0] + " " + name_array[1] + "</span></div>")
+			}
+		}
+		if (selected_batsmen.length === 5){
+			BatsmenDivWidth = 100/selected_batsmen.length+"%"
+			$(".BatsmenPreview").html("")
+			for(var i=0; i<5; i++){
+				var name_array = selected_batsmen[i].name.split('_')
+				$(".BatsmenPreview").append("<div class=\"PlayerView\" style=\"width: " + BatsmenDivWidth + ";\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center><span class=\"PlayerNameView\">" + name_array[0] + " " + name_array[1] + "</span></div>")
+			}
+		}
+
+		if (selected_allrounders.length == 1){
+			var name_array = selected_allrounders[0].name.split('_')
+			AllrounderDivWidth = 100/selected_allrounders.length+"%"
+			$(".AllrounderPreview").html("<div class=\"PlayerView\" style=\"width: " + AllrounderDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/allrounder.png" %}\"></center><span class=\"PlayerNameView\">" + name_array[0] + " " + name_array[1] + "</span></div>")
+		}
+		else{
+			$(".AllrounderPreview").html("<center><div class=\"PlayerView\" style=\"width: 100%\">No Allrounders Selected</div></center>")	
+		}
+		if (selected_allrounders.length === 2){
+			AllrounderDivWidth = 100/selected_allrounders.length+"%"
+			$(".AllrounderPreview").html("")
+			for(var i=0; i<2; i++){
+				var name_array = selected_allrounders[i].name.split('_')
+				$(".AllrounderPreview").append("<div class=\"PlayerView\" style=\"width: " + AllrounderDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/allrounder.png" %}\"></center><span class=\"PlayerNameView\">" + name_array[0] + " " + name_array[1] + "</span></div>")
+			}
+		}
+		if (selected_allrounders.length === 3){
+			AllrounderDivWidth = 100/selected_allrounders.length+"%"
+			$(".AllrounderPreview").html("")
+			for(var i=0; i<3; i++){
+				var name_array = selected_allrounders[i].name.split('_')
+				$(".AllrounderPreview").append("<div class=\"PlayerView\" style=\"width: " + AllrounderDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/allrounder.png" %}\"></center><span class=\"PlayerNameView\">" + name_array[0] + " " + name_array[1] + "</span></div>")
+			}
+		}
+
+		if (selected_bowlers.length == 1){
+			var name_array = selected_bowlers[0].name.split('_')
+			BolwersDivWidth = 100/selected_bowlers.length+"%"
+			$(".BowlerPreview").html("<div class=\"PlayerView\" style=\"width: " + BolwersDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/bowlers.png" %}\"></center><span class=\"PlayerNameView\">" + name_array[0] + " " + name_array[1] + "</span></div>")
+		}
+		else{
+			$(".BowlerPreview").html("<center><div class=\"PlayerView\" style=\"width: 100%\">No Batsman Selected</div></center>")	
+		}
+		if (selected_bowlers.length === 2){
+			BolwersDivWidth = 100/selected_bowlers.length+"%"
+			$(".BowlerPreview").html("")
+			for(var i=0; i<2; i++){
+				var name_array = selected_bowlers[i].name.split('_')
+				$(".BowlerPreview").append("<div class=\"PlayerView\" style=\"width: " + BolwersDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/bowlers.png" %}\"></center><span class=\"PlayerNameView\">" + name_array[0] + " " + name_array[1] + "</span></div>")
+			}
+		}
+		if (selected_bowlers.length === 3){
+			BolwersDivWidth = 100/selected_bowlers.length+"%"
+			$(".BowlerPreview").html("")
+			for(var i=0; i<3; i++){
+				var name_array = selected_bowlers[i].name.split('_')
+				$(".BowlerPreview").append("<div class=\"PlayerView\" style=\"width: " + BolwersDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/bowlers.png" %}\"></center><span class=\"PlayerNameView\">" + name_array[0] + " " + name_array[1] + "</span></div>")
+			}
+		}
+		if (selected_bowlers.length === 4){
+			BolwersDivWidth = 100/selected_bowlers.length+"%"
+			$(".BowlerPreview").html("")
+			for(var i=0; i<4; i++){
+				var name_array = selected_bowlers[i].name.split('_')
+				$(".BowlerPreview").append("<div class=\"PlayerView\" style=\"width: " + BolwersDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/bowlers.png" %}\"></center><span class=\"PlayerNameView\">" + name_array[0] + " " + name_array[1] + "</span></div>")
+			}
+		}
+		if (selected_bowlers.length === 5){
+			BolwersDivWidth = 100/selected_bowlers.length+"%"
+			$(".BowlerPreview").html("")
+			for(var i=0; i<5; i++){
+				var name_array = selected_bowlers[i].name.split('_')
+				$(".BowlerPreview").append("<div class=\"PlayerView\" style=\"width: " + BolwersDivWidth + ";\"><center><img class=\"player_image\" src=\"{% static "images/bowlers.png" %}\"></center><span class=\"PlayerNameView\">" + name_array[0] + " " + name_array[1] + "</span></div>")
+			}
+		}
+		//	$(".BatsmenPreview").(function(){ style=\"width:50px;height:50px;overflow-wrap: break-word;display:block\"
+			// 	for(var i=0; i<5; i++){
+			// 		"<div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[0].name.replace(/_/g, ' ') + "</div>"
+			// 	}
+			// });
+		
+
+		// if (selected_batsmen.length == 2){
+		// 	$(".BatsmenPreview").html("<div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[0].name.replace(/_/g, ' ') + "</div><div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[1].name.replace(/_/g, ' ') + "</div>")
+		// }
+
+		// if (selected_batsmen.length == 3){
+		// 	$(".BatsmenPreview").html("<div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[0].name.replace(/_/g, ' ') + "</div><div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[1].name.replace(/_/g, ' ') + "</div><div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[2].name.replace(/_/g, ' ') + "</div>")
+		// }
+
+		// if (selected_batsmen.length == 4){
+		// 	$(".BatsmenPreview").html("<div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[0].name.replace(/_/g, ' ') + "</div><div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[1].name.replace(/_/g, ' ') + "</div><div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[2].name.replace(/_/g, ' ') + "</div><div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[3].name.replace(/_/g, ' ') + "</div>")
+		// }
+
+		// if (selected_batsmen.length == 5){
+		// 	$(".BatsmenPreview").html("<div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[0].name.replace(/_/g, ' ') + "</div><div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[1].name.replace(/_/g, ' ') + "</div><div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[2].name.replace(/_/g, ' ') + "</div><div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[3].name.replace(/_/g, ' ') + "</div><div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[4].name.replace(/_/g, ' ') + "</div>")
+		// }
+	    var div = $(".TeamPreviewContainer");
+	    var height = div.css({
+	        display: "inline"
+	    }).height();
+	    
+	    div.css({
+	        overflow: "hidden",
+	        marginTop: height,
+	        height: 0
+	    }).animate({
+	        marginTop: 0,
+	        height: height
+	    }, 500, function () {
+	        $(this).css({
+	            display: "inline-block",
+	            overflow: "",
+	            height: "",
+	            marginTop: ""
+	        });
+	    });
+
+	});
+
+	$(".captain_class").change(function() {
+	    var checked = $(this).is(':checked');
+	    var sibchecked = $(this).next().next().is(':checked');
+	    $(".captain_class").prop('checked',false);
+	    if(checked) {
+	    	$(this).prop('checked',true);
+	    	if(sibchecked){	    		
+	    		$(this).next().next().prop('checked',false);
+	    	}   
+	    }
+	});
+
+	$(".vice_class").change(function() {
+	    var checked = $(this).is(':checked');
+	    $(".vice_class").prop('checked',false);
+	    var sibchecked = $(this).prev().prev().is(':checked'); 
+	    if(checked) {
+	    	$(this).prop('checked',true);
+	    	if(sibchecked){	    		
+	    		$(this).prev().prev().prop('checked',false);
+	    	}   
+	    }
+	    // if(checked && sibchecked) {
+	    //     $(this).prop('checked',true);
+	    //     $(this).prev().prev().prop('checked',true);
+	    // }
+	    // if(checked) {
+	    //     $(this).prop('checked',true);
+	    // }
+	});
+
 	function openCity(evt, cityName) {
 	    var i, tabcontent, tablinks;
 	    tabcontent = document.getElementsByClassName("tabcontent");
@@ -187,7 +412,7 @@
 		for(var i = 0; i < players_input.length; i++){
 			if($(players_input[i]).is(':checked')){
  		   	  players_count = players_count+1;
- 		   	  console.log(players_count)
+ 		   	  console.log("Something")
  		    }
 		}
 		if(players_count<11){
@@ -226,11 +451,17 @@
 			$('#sub_max').delay(3000).fadeOut(1000);
 		}
 		else if(!$('.captain_class').is(':checked')){
+			event.preventDefault();
 			if(!$('.vice_class').is(':checked')){
-				event.preventDefault();	
 				$(this).prop( "checked", false );
 				$('#sub_max').css('display','block');
 				$('#sub_max').html("Please Select Your <strong>Captain and Vice Captain</strong>");
+				$('#sub_max').delay(3000).fadeOut(1000);	
+			}
+			else{
+				$(this).prop( "checked", false );
+				$('#sub_max').css('display','block');
+				$('#sub_max').html("Please Select Your <strong>Captain</strong>");
 				$('#sub_max').delay(3000).fadeOut(1000);	
 			}
 		}
@@ -255,6 +486,7 @@
 	})
 
 	/*For Checkong Purpose*/
+	temp_global = 0
 	$('.keeper').click(function(){
 		var keeper_inputs = $('.keeper');
 		players_input = $('.CustomInput')
@@ -262,7 +494,7 @@
 		var players_count = 0;
 		for(var i = 0; i < keeper_inputs.length; i++){
 			if($(keeper_inputs[i]).is(':checked')){
- 		   	  global_keeper_count = global_keeper_count+1;
+ 		   	  	global_keeper_count = global_keeper_count+1;
  		    }
 		}
 		for(var i = 0; i < players_input.length; i++){

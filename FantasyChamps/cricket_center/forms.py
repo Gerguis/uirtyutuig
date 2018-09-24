@@ -51,15 +51,15 @@ class CreateTeamAllroundersForm(forms.Form):
 
 
 class CreateTeamBowlersForm(forms.Form):
-    Bhuvneshwar_Kumar = forms.BooleanField(required=False)
+    B_Kumar = forms.BooleanField(required=False)
     Kuldeep_Yadav = forms.BooleanField(required=False)
     Shardul_Thakur = forms.BooleanField(required=False)
-    Yuzvendra_Chahal = forms.BooleanField(required=False)
+    Y_Chahal = forms.BooleanField(required=False)
     Siddarth_Kaul = forms.BooleanField(required=False)
     Umesh_Yadav = forms.BooleanField(required=False)
     Ashley_Nurse = forms.BooleanField(required=False)
     Samuel_Badree = forms.BooleanField(required=False)
-    Kesrick_Williams = forms.BooleanField(required=False)
+    K_Williams = forms.BooleanField(required=False)
     Keemo_Paul = forms.BooleanField(required=False)
     Sheldon_Cottrell = forms.BooleanField(required=False)
 

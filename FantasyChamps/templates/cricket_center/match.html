@@ -12,154 +12,256 @@
 	<div class="MainBackground">
 	  <div class="color-overlay"></div>
 	</div>  
-	<div class="MatchArea">
+	<div class="MatchAreaForMatch">
+	  <div class="JoinNowContainer">	
+	  	<div class="JoinNowRealDiv">
+	  		<center><i class="fa fa-chevron-circle-down CloseJoinNowContainer"></i>
+	  		<div class="JoinNowHeaderContainer">
+	  			<h3 class="JoinNowHeader">Join </h3>
+	  		</div>
+		  	<hr style="width:95%;"></center>
+	  		<div style="width:100%;">
+	  			<div class="col-xs-6" style="float:left">
+	  				<input type="hidden" name="" value="" id="match_slug">
+	  				<input type="hidden" name="" value="" id="contest_slug">
+	  				<h5 style="display:inline-block; float:left; text-align:left; background-color:green; width:100%">Contest Details : </h5>
+		  			<h6 style="display:inline-block; float:left; text-align:left; background-color:green; width:50%">Total Winnings</h6>
+		  			<h6 style="display:inline-block; float:left; text-align:right; background-color:yellow; width:50%">Entry Fee</h6>
+		  			<h6 style="display:inline-block; float:left; text-align:left; background-color:green; width:50%" id="ContestPrice"></h6>
+		  			<h6 style="display:inline-block; float:left; text-align:right; background-color:yellow; width:50%" id="ContestFee"></h6>
+	  			</div>
+	  			<div class="col-xs-6" style="float:right;">
+		  			<h5 style="display:inline-block; float:left; text-align:left; background-color:green; width:100%">Wallet Details : </h5>
+		  			<h6 style="display:inline-block; float:left; text-align:left; background-color:yellow; width:50%">Main Balance</h6>
+		  			<h6 style="display:inline-block; float:left; text-align:right; background-color:yellow; width:50%">Bonus Balance</h6>
+			  		<h6 style="display:inline-block; float:left; text-align:left; background-color:yellow; width:50%" id="UserMainBalance"></h6>
+			  		<h6 style="display:inline-block; float:left; text-align:right; background-color:yellow; width:50%" id="UserBonus"></h6>
+		  		</div>
+		  		<center>
+		  			<div class="col-xs-12" style="width:80%;">
+			  			<h5 style="display:inline-block; float:left; text-align:left; background-color:green; width:100%">Main Deduction : </h5>
+			  			<h6 style="display:inline-block; float:left; text-align:left; background-color:yellow; width:50%">From Main Balance : </h6>
+			  			<h6 style="display:inline-block; float:left; text-align:right; background-color:yellow; width:50%">From Bonus</h6>
+			  			<h6 style="display:inline-block; float:left; text-align:left; background-color:green; width:50%" id="MainDeduction"></h6>
+			  			<h6 style="display:inline-block; float:left; text-align:right; background-color:yellow; width:50%" id="BonusDeduction"></h6>
+			  			<button type="button" class="btn btn-success btn-lg PayAndJoinNow"  style="display:inline-block; float:left; background-color:green; position:relative; width:100%; " id="PayAndJoinNowID" pay-and-join="{% url 'cricket_center:pay_and_join' %}">Pay & Join</button>
+			  		</div> 
+			  	  	
+			  	  	{#<!--check-teams="{% url 'cricket_center:join_now_contest' match_slug=match_slug contest_slug=contest.contest_slug%}"-->#}
+		  		</center>
+	  		</div>
+	  		<!--<div sytyle="display:table-cell"><h6 class="CloseJoinNowContainer">C Me</h6></div>
+	  		<h1>Hell Yeah</h1>
+	  	0	<h6>Hell Yeah New</h6>-->
+	  	</div>
+	  </div>
 	  <div class="MatchCard">
 	  	<center>
 	  		<h4 style="position:relative;top:2px;">Kent vs Hamp</h4>
 	  		<h6 style="position:relative;top:-9px;">Available Leagues</h6>
+	  		<hr class="HrSeparatorOfInfoBar">
 	  	</center>
 	  </div>
 	  <h3><span><img src="{% static "images/MultipleChampion.png" %}" alt="Image Not Found" class="LeagueImage"></span>&nbsp; Grand and Great Winning</h3>
-	  <div class="LeagueArea row">
-	  	<div class="row col-xs-6">
-	  	  <div class="col-xs-12 LeagueCard">
-	  	  	<center><h5 class="LeagueName">40% Winners</h5></center>
-	  	  	<hr>
-	  	  	<div class="LeagueInfoContainer">
-	  	  	  <h6>Total Winnings : <span style="float:right;">1,000₹</span></h6>
-		  	  <h6>Entry Fees : <span style="float:right;">13₹</span></h6>
-	  	 	  <div class="progress">
-			    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">40%</div>
-			  </div>
-			  <h6>Joined<span style="float:right;">40/100</span></h6>
-		  	  <hr>
-		  	  <center><a href="{% url 'cricket_center:create_team' slug='FirstMatchOfFantasyChamps'%}"><button type="button" class="btn btn-success btn-lg JoinNow">Join Now</b></button></a></center>
-	  	  	</div>
-	  	  </div>
-	 	</div>
-	  	<div class="row col-xs-6">
-	  	  <div class="col-xs-12 LeagueCard">
-	  	  	<center><h5 class="LeagueName">50% Winners</h5></center>
-	  	  	<hr>
-	  	  	<div class="LeagueInfoContainer">
-	  	  	  <h6>Total Winnings : <span style="float:right;">1,000₹</span></h6>
-		  	  <h6>Entry Fees : <span style="float:right;">13₹</span></h6>
-	  	 	  <div class="progress">
-			    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">40%</div>
-			  </div>
-			  <h6>Joined<span style="float:right;">40/100</span></h6>
-		  	  <hr>
-		  	  <center><a href="#"><button type="button" class="btn btn-success btn-lg JoinNow">Join Now</b></button></a></center>
-	  	  	</div>
-	  	  </div>
-	  	</div>
-	  	<div class="row col-xs-6">
-	  	  <div class="col-xs-12 LeagueCard">
-	  	  	<center><h5 class="LeagueName">60% Winners</h5></center>
-	  	  	<hr>
-	  	  	<div class="LeagueInfoContainer">
-	  	  	  <h6>Total Winnings : <span style="float:right;">1,000₹</span></h6>
-		  	  <h6>Entry Fees : <span style="float:right;">13₹</span></h6>
-	  	 	  <div class="progress">
-			    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">40%</div>
-			  </div>
-			  <h6>Joined<span style="float:right;">40/100</span></h6>
-		  	  <hr>
-		  	  <center><a href="#"><button type="button" class="btn btn-success btn-lg JoinNow">Join Now</b></button></a></center>
-	  	  	</div>
-	  	  </div>
-	  	</div>
-	  	<div class="row col-xs-6">
-	  	  <div class="col-xs-12 LeagueCard">
-	  	  	<center><h5 class="LeagueName">70% Winners</h5></center>
-	  	  	<hr>
-	  	  	<div class="LeagueInfoContainer">
-	  	  	  <h6>Total Winnings : <span style="float:right;">1,000₹</span></h6>
-		  	  <h6>Entry Fees : <span style="float:right;">13₹</span></h6>
-	  	 	  <div class="progress">
-			    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">40%</div>
-			  </div>
-			  <h6>Joined<span style="float:right;">40/100</span></h6>
-		  	  <hr>
-		  	  <center><a href="#"><button type="button" class="btn btn-success btn-lg JoinNow">Join Now</b></button></a></center>
-	  	  	</div>
-	  	  </div>
-	  	</div>
-	  </div>
-	  <h3><span><img src="{% static "images/MultipleChampion.png" %}" alt="Image Not Found" class="LeagueImage"></span>&nbsp; Grand and Great Winning</h3>
-	  <div class="LeagueArea row">
-	  	<div class="row col-xs-6">
-	  	  <div class="col-xs-12 LeagueCard">
-	  	  	<center><h5 class="LeagueName">40% Winners</h5></center>
-	  	  	<hr>
-	  	  	<div class="LeagueInfoContainer">
-	  	  	  <h6>Total Winnings : <span style="float:right;">1,000₹</span></h6>
-		  	  <h6>Entry Fees : <span style="float:right;">13₹</span></h6>
-	  	 	  <div class="progress">
-			    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">40%</div>
-			  </div>
-			  <h6>Joined<span style="float:right;">40/100</span></h6>
-		  	  <hr>
-		  	  <center><a href="#"><button type="button" class="btn btn-success btn-lg JoinNow">Join Now</b></button></a></center>
-	  	  	</div>
-	  	  </div>
-	  	</div>
-	  	<div class="row col-xs-6">
-	  	  <div class="col-xs-12 LeagueCard">
-	  	  	<center><h5 class="LeagueName">40% Winners</h5></center>
-	  	  	<hr>
-	  	  	<div class="LeagueInfoContainer">
-	  	  	  <h6>Total Winnings : <span style="float:right;">1,000₹</span></h6>
-		  	  <h6>Entry Fees : <span style="float:right;">13₹</span></h6>
-	  	 	  <div class="progress">
-			    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">40%</div>
-			  </div>
-			  <h6>Joined<span style="float:right;">40/100</span></h6>
-		  	  <hr>
-		  	  <center><a href="#"><button type="button" class="btn btn-success btn-lg JoinNow">Join Now</b></button></a></center>
-	  	  	</div>
-	  	  </div>
-	  	</div>
-	  	<div class="row col-xs-6">
-	  	  <div class="col-xs-12 LeagueCard">
-	  	  	<center><h5 class="LeagueName">40% Winners</h5></center>
-	  	  	<hr>
-	  	  	<div class="LeagueInfoContainer">
-	  	  	  <h6>Total Winnings : <span style="float:right;">1,000₹</span></h6>
-		  	  <h6>Entry Fees : <span style="float:right;">13₹</span></h6>
-	  	 	  <div class="progress">
-			    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">40%</div>
-			  </div>
-			  <h6>Joined<span style="float:right;">40/100</span></h6>
-		  	  <hr>
-		  	  <center><a href="#"><button type="button" class="btn btn-success btn-lg JoinNow">Join Now</b></button></a></center>
-	  	  	</div>
-	  	  </div>
-	  	</div> 
-	  	<div class="row col-xs-6">
-	  	  <div class="col-xs-12 LeagueCard">
-	  	  	<center><h5 class="LeagueName">40% Winners</h5></center>
-	  	  	<hr>
-	  	  	<div class="LeagueInfoContainer">
-	  	  	  <h6>Total Winnings : <span style="float:right;">1,000₹</span></h6>
-		  	  <h6>Entry Fees : <span style="float:right;">13₹</span></h6>
-	  	 	  <div class="progress">
-			    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">40%</div>
-			  </div>
-			  <h6>Joined<span style="float:right;">40/100</span></h6>
-		  	  <hr>
-		  	  <center><a href="#"><button type="button" class="btn btn-success btn-lg JoinNow">Join Now</b></button></a></center>
-	  	  	</div>
-	  	  </div>
-	  	</div>
-	  </div>
+	  {% for contest in all_contests_obj %}
+		{% if contest.contest_category == 'Great and Grand Winning' %}
+			<div class="LeagueArea row">
+		  	    <div class="row col-xs-12">
+		  	      <div class="col-xs-12 LeagueCard">
+		  	  	    <center><h5 class="LeagueName">{{contest.contest_name}}</h5></center>
+		  	  	    <hr>
+		  	  	    <div class="LeagueInfoContainer">
+		  	  	      <h6>Total Winnings : <span style="float:right;">₹{{contest.contest_price}}</span></h6>
+			  	      <h6>Entry Fees : <span style="float:right;">₹{{contest.contest_fee}}</span></h6>
+		  	 	      <div class="progress">
+				        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{ contest.joined_percentage }}%">{{contest.joined_percentage}}%</div>
+				      </div>
+				      <h6>Joined<span style="float:right;">{{contest.total_player_joined}}/{{contest.contest_size}}</span></h6>
+			  	      <hr>
+			  	      {% if total_teams.count == 0 %}
+				  	      <center><a href="{% url 'cricket_center:create_team' slug=match_slug %}"><button type="button" class="btn btn-success btn-lg JoinNow">Create Team a Team First</b></button></a></center>
+				  	  {% else %}
+				  	  	  <center><button type="button" class="btn btn-success btn-lg JoinNow JoinNowClass" check-teams="{% url 'cricket_center:join_now_contest' match_slug=match_slug contest_slug=contest.contest_slug %}">Join Now</button></center>
+				  	  {% endif %}
+		  	  	    </div>
+		  	      </div>
+			    </div>
+			</div>
+		{% endif %}  
+	  {% endfor %}
 
-	 </div> 
+	  <h3><span><img src="{% static "images/MultipleChampion.png" %}" alt="Image Not Found" class="LeagueImage"></span>&nbsp; Head to Head</h3>
+	  
+	  {% for contest in all_contests_obj %}
+		{% if contest.contest_category == 'Head to Head' %}
+			<div class="LeagueArea row">
+		  	    <div class="row col-xs-12">
+		  	      <div class="col-xs-12 LeagueCard">
+		  	  	    <center><h5 class="LeagueName">{{contest.contest_name}}</h5></center>
+		  	  	    <hr>
+		  	  	    <div class="LeagueInfoContainer">
+		  	  	      <h6>Total Winnings : <span style="float:right;">₹{{contest.contest_price}}</span></h6>
+			  	      <h6>Entry Fees : <span style="float:right;">₹{{contest.contest_fee}}</span></h6>
+		  	 	      <div class="progress">
+				        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{ contest.joined_percentage }}%">{{contest.joined_percentage}}%</div>
+				      </div>
+				      <h6>Joined<span style="float:right;">{{contest.total_player_joined}}/{{contest.contest_size}}</span></h6>
+			  	      <hr>
+			  	      {% if total_teams.count == 0 %}
+				  	      <center><a href="{% url 'cricket_center:create_team' slug=match_slug %}"><button type="button" class="btn btn-success btn-lg JoinNow">Create Team a Team First</b></button></a></center>
+				  	  {% else %}
+				  	  	  <center><button type="button" class="btn btn-success btn-lg JoinNow JoinNowClass" check-teams="{% url 'cricket_center:join_now_contest' match_slug=match_slug contest_slug=contest.contest_slug%}">Join Now</button></center>
+				  	  {% endif %}
+		  	  	    </div>
+		  	      </div>
+			    </div>
+			</div>
+		{% endif %}  
+	  {% endfor %}
+	  <div class="footer">
+		<!--<center><div style="position:relative; display:inline-block; width:2px; height:40px; top:5px; background-color:green;"></div></center>	-->
+		<a href="#"><button class="btn btn-success FooterInfoLeft">
+			My Teams : {{ total_teams.count }}
+		</button></a> 
+		<a href="#"><button class="btn btn-success FooterInfoRight">
+			Contests Joined : ?
+		</button></a>  	
+	  </div>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+// // Reverse
+$(".CloseJoinNowContainer").click(function () {
+    var div = $(".JoinNowContainer");
+    
+    var height = div.height();
+    
+    div.css({
+        overflow: "hidden",
+        marginTop: 0,
+        height: height
+    }).animate({
+        marginTop: height,
+        height: 0
+    }, 500, function () {
+        $(this).css({
+            display: "none",
+            overflow: "",
+            height: "",
+            marginTop: ""
+        });
+    });
+});
+
+$('.JoinNowClass').click(function () {
+	console.log("I got Called")
+    var div = $(".JoinNowContainer");
+    var height = div.css({
+        display: "inline"
+    }).height();
+    
+    div.css({
+        overflow: "hidden",
+        marginTop: height,
+        height: 0
+    }).animate({
+        marginTop: 0,
+        height: height
+    }, 500, function () {
+        $(this).css({
+            display: "inline-block",
+            overflow: "",
+            height: "",
+            marginTop: ""
+        });
+    });
+    $.ajax({
+        url: $(this).attr('check-teams'),
+        dataType: 'json',
+        success: function (data) {
+        	console.log(data)
+        	$('.JoinNowHeader').html("Join " + data.contest_name+ " Contest")
+        	$('.PayAndJoinNow').attr('id', "PayAndJoinNowID")
+        	$('.PayAndJoinNow').attr('id', "PayAndJoinNowID")
+    		$('#ContestPrice').html("₹"+data.contest_price)
+    		$('#ContestFee').html("₹"+data.contest_fee)
+    		$('#UserMainBalance').html("₹"+data.user_balance)
+    		$('#UserBonus').html("₹"+data.user_bonus)
+    		$('#MainDeduction').html("₹"+data.deduction_from_main)
+    		$('#BonusDeduction').html("₹"+data.deduction_from_bonus) 
+    		$('#match_slug').val(data.match_slug)
+    		$('#contest_slug').val(data.contest_slug)
+    		if(data.add_money > 0 && data.low_balance == 1){
+    			$("#PayAndJoinNowID").html("Proceed to Pay " + data.add_money)
+    			$("#PayAndJoinNowID").attr("pay-and-join", "{% url 'cricket_center:proceed_to_pay' %}")
+    			$("#PayAndJoinNowID").removeAttr('id')
+    		}       		
+        }
+    });
+});
+
+//For getting CSRF token
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+$('#PayAndJoinNowID').click(function () {
+	var match_slug = $('#match_slug').attr('value')
+	var contest_slug = $('#contest_slug').attr('value')
+	var csrftoken = getCookie('csrftoken');
+    $.ajax({
+        url: $(this).attr('pay-and-join'),
+        type: "POST",
+        data: {csrfmiddlewaretoken : csrftoken, match_slug: match_slug, contest_slug: contest_slug},
+        dataType: 'json',
+        success: function (data) {
+        	console.log(data)
+        }
+    });
+});
+
+
+</script>
+<a href="{% url 'cricket_center:match' slug=match_slug %}">
 {% endblock %}
 
-
-
-
+<!--<div style="width:100%;">
+	  			<div class="col-xs-6" style="float:left">
+	  				<h5 style="display:inline-block; float:left; text-align:left; background-color:green; width:100%">Contest Details : </h5>
+		  			<h6 style="display:inline-block; float:left; text-align:left; background-color:green; width:50%">Total Winnings</h6>
+		  			<h6 style="display:inline-block; float:left; text-align:right; background-color:yellow; width:50%">Entry Fee</h6>
+		  			<h6 style="display:inline-block; float:left; text-align:left; background-color:green; width:50%" id="ContestPrice"></h6>
+		  			<h6 style="display:inline-block; float:left; text-align:right; background-color:yellow; width:50%" id="ContestFee"></h6>
+	  			</div>
+	  			<div class="col-xs-6" style="float:right;">
+		  			<h5 style="display:inline-block; float:left; text-align:left; background-color:green; width:100%">Wallet Details : </h5>
+		  			<h6 style="display:inline-block; float:left; text-align:left; background-color:yellow; width:50%">Main Balance</h6>
+		  			<h6 style="display:inline-block; float:left; text-align:right; background-color:yellow; width:50%">Bonus Balance</h6>
+			  		<h6 style="display:inline-block; float:left; text-align:left; background-color:yellow; width:50%" id="UserMainBalance"></h6>
+			  		<h6 style="display:inline-block; float:left; text-align:right; background-color:yellow; width:50%" id="UserBonus"></h6>
+		  		</div>
+		  		<center><div class="col-xs-12" style="width:80%;">
+		  			<h5 style="display:inline-block; float:left; text-align:left; background-color:green; width:100%">Main Deduction : </h5>
+		  			<h6 style="display:inline-block; float:left; text-align:left; background-color:yellow; width:50%">From Main Balance : </h6>
+		  			<h6 style="display:inline-block; float:left; text-align:right; background-color:yellow; width:50%">From Bonus</h6>
+		  			<h6 style="display:inline-block; float:left; text-align:left; background-color:green; width:50%" id="MainDeduction"></h6>
+		  			<h6 style="display:inline-block; float:left; text-align:right; background-color:yellow; width:50%" id="BonusDeduction"></h6>
+		  		</div></center>
+	  		</div>
+-->
 
 
 

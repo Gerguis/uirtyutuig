@@ -12,6 +12,7 @@
     <div class="color-overlay"></div>
   </div>  
   <div class="MatchArea">   
+    <section>
     {% for match in match_obj %}
       <div class="MatchInfoCard">
         <div class="MatchInfo">
@@ -23,17 +24,20 @@
           {% endwith %}
           <h1 class="vs">VS</h1>
           <div class="MatchBetween">
-            <h4 class="MatchHeader">{{match.team_one}} vs {{match.team_two}}</h4>
+            <h4 class="MatchHeader">{{match.match_name}}</h4>
             <h6>{{match.tournament_name}}</h6>  
           </div>
         </div>
         <div class="ActionInfo">
-          <button type="button" class="btn btn-success btn-lg StartsIn" id="timerOne"></b></button>
+          <button type="button" class="btn btn-success btn-lg StartsIn" time-counter="{{match.match_tick}}"></b></button>
           <div class="SeparatorLine"></div>
-          <a href="{% url 'cricket_center:match' slug='FirstMatchOfFantasyChamps' %}"><button type="button" class="btn btn-success btn-lg PlayNow">Play Now</b></button></a>
+          {% with match.match_slug as match_slug %}
+            <a href="{% url 'cricket_center:match' slug=match_slug %}"><button type="button" class="btn btn-success btn-lg PlayNow">Play Now</b></button></a>
+          {% endwith %}
         </div>
       </div>
     {% endfor %}
+    </section>
   </div>
 {% endblock %}
     {# <div class="MatchInfoCard">

@@ -2,6 +2,7 @@
 //   duration: 1200,
 // })
 
+
 $(function() {
   AOS.init();
 });
@@ -10,116 +11,169 @@ $(window).on('load', function() {
   AOS.refresh();
 });
 
-var deadlineOne = new Date("July 18, 2018 15:00:00").getTime();
-var x = setInterval(function() {
-var now = new Date().getTime();
-var t = deadlineOne - now;
-var days = Math.floor(t / (1000 * 60 * 60 * 24));
-var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
-var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-var seconds = Math.floor((t % (1000 * 60)) / 1000);
-document.getElementById("timerOne").innerHTML = days + ":"
-+ hours + ":" + minutes + ":" + seconds + "s";
-    if (t < 0) {
-        clearInterval(x);
-        document.getElementById("timerOne").innerHTML = "EXPIRED";
-    }
-}, 1000);
+$(function(){
+  $('[time-counter]').each(function(i) {
+    var temp = i+1
+    $(this).attr('id', 'TimeCounter'+temp)
+    total_tick = $(this).attr('time-counter')
+    var now = Math.floor(new Date().getTime()/1000)
+    var time_tick = total_tick - now;
+    timer(time_tick, temp, $(this).attr('id'))
+  });
+});
 
-var deadlineTwo = new Date("July 19, 2018 15:00:00").getTime();
-var x = setInterval(function() {
-var now = new Date().getTime();
-var t = deadlineTwo - now;
-var days = Math.floor(t / (1000 * 60 * 60 * 24));
-var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
-var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-var seconds = Math.floor((t % (1000 * 60)) / 1000);
-document.getElementById("timerTwo").innerHTML = days + ":"
-+ hours + ":" + minutes + ":" + seconds + "s";
-    if (t < 0) {
-        clearInterval(x);
-        document.getElementById("timerTwo").innerHTML = "EXPIRED";
-    }
-}, 1000);
+var timerData = [];
 
-var deadlineThree = new Date("July 20, 2018 15:00:00").getTime();
-var x = setInterval(function() {
-var now = new Date().getTime();
-var t = deadlineThree - now;
-var days = Math.floor(t / (1000 * 60 * 60 * 24));
-var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
-var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-var seconds = Math.floor((t % (1000 * 60)) / 1000);
-document.getElementById("timerThree").innerHTML = days + ":"
-+ hours + ":" + minutes + ":" + seconds + "s";
-    if (t < 0) {
-        clearInterval(x);
-        document.getElementById("timerThree").innerHTML = "EXPIRED";
+function secondPassed(row, id) {
+    var seconds = timerData[row].remaining;
+    var minutes = Math.floor((seconds / 60) % 60);
+    var hours = Math.floor(seconds / (60 * 60) % 24);
+    var days = Math.floor(seconds / (60 * 60 * 24));
+    var remainingSeconds = seconds % 60;
+    if (remainingSeconds < 10) {
+        remainingSeconds = "0" + remainingSeconds;
     }
-}, 1000);
-var deadlineFour = new Date("July 21, 2018 15:00:00").getTime();
-var x = setInterval(function() {
-var now = new Date().getTime();
-var t = deadlineFour - now;
-var days = Math.floor(t / (1000 * 60 * 60 * 24));
-var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
-var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-var seconds = Math.floor((t % (1000 * 60)) / 1000);
-document.getElementById("timerFour").innerHTML = days + ":"
-+ hours + ":" + minutes + ":" + seconds + "s";
-    if (t < 0) {
-        clearInterval(x);
-        document.getElementById("timerFour").innerHTML = "EXPIRED";
+    $('#'+id).html(days + ":" + hours + ":" + minutes + ":" + remainingSeconds);
+    if (seconds <= 0) {
+        clearInterval(timerData[row].timerId);
+        $('#'+id).html("Time-Over");
+    } else {
+        seconds--;
     }
-}, 1000);
+    timerData[row].remaining = seconds;
+}
 
-var deadlineFive = new Date("July 22, 2018 15:00:00").getTime();
-var x = setInterval(function() {
-var now = new Date().getTime();
-var t = deadlineThree - now;
-var days = Math.floor(t / (1000 * 60 * 60 * 24));
-var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
-var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-var seconds = Math.floor((t % (1000 * 60)) / 1000);
-document.getElementById("timerFive").innerHTML = days + ":"
-+ hours + ":" + minutes + ":" + seconds + "s";
-    if (t < 0) {
-        clearInterval(x);
-        document.getElementById("timerFive").innerHTML = "EXPIRED";
-    }
-}, 1000);
+function timer(sec, row, id) {
+    timerData[row] = {
+        remaining: sec,
+        timerId: setInterval(function () {
+            secondPassed(row, id);
+        }, 1000)
+    };
+}
 
-var deadlineFive = new Date("July 23, 2018 15:00:00").getTime();
-var x = setInterval(function() {
-var now = new Date().getTime();
-var t = deadlineThree - now;
-var days = Math.floor(t / (1000 * 60 * 60 * 24));
-var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
-var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-var seconds = Math.floor((t % (1000 * 60)) / 1000);
-document.getElementById("timerSix").innerHTML = days + ":"
-+ hours + ":" + minutes + ":" + seconds + "s";
-    if (t < 0) {
-        clearInterval(x);
-        document.getElementById("timerSix").innerHTML = "EXPIRED";
-    }
-}, 1000);
 
-var deadlineFive = new Date("July 23, 2018 15:00:00").getTime();
-var x = setInterval(function() {
-var now = new Date().getTime();
-var t = deadlineThree - now;
-var days = Math.floor(t / (1000 * 60 * 60 * 24));
-var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
-var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-var seconds = Math.floor((t % (1000 * 60)) / 1000);
-document.getElementById("timerSix").innerHTML = days + ":"
-+ hours + ":" + minutes + ":" + seconds + "s";
-    if (t < 0) {
-        clearInterval(x);
-        document.getElementById("timerSix").innerHTML = "EXPIRED";
-    }
-}, 1000);
+
+
+
+
+
+
+
+
+
+
+
+// var deadlineOne = new Date("September 12, 2018 19:00:00").getTime();
+// var x = setInterval(function() {
+// var now = new Date().getTime();
+// var t = deadlineOne - now;
+// var days = Math.floor(t / (1000 * 60 * 60 * 24));
+// var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+// var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+// var seconds = Math.floor((t % (1000 * 60)) / 1000);
+// document.getElementById("timerOne").innerHTML = days + ":"
+// + hours + ":" + minutes + ":" + seconds + "s";
+//     if (t < 0) {
+//         clearInterval(x);
+//         document.getElementById("timerOne").innerHTML = "EXPIRED";
+//     }
+// }, 1000);
+
+// var deadlineTwo = new Date(" 19, 2018 15:00:00").getTime();
+// var x = setInterval(function() {
+// var now = new Date().getTime();
+// var t = deadlineTwo - now;
+// var days = Math.floor(t / (1000 * 60 * 60 * 24));
+// var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+// var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+// var seconds = Math.floor((t % (1000 * 60)) / 1000);
+// document.getElementById("timerTwo").innerHTML = days + ":"
+// + hours + ":" + minutes + ":" + seconds + "s";
+//     if (t < 0) {
+//         clearInterval(x);
+//         document.getElementById("timerTwo").innerHTML = "EXPIRED";
+//     }
+// }, 1000);
+
+// var deadlineThree = new Date("July 20, 2018 15:00:00").getTime();
+// var x = setInterval(function() {
+// var now = new Date().getTime();
+// var t = deadlineThree - now;
+// var days = Math.floor(t / (1000 * 60 * 60 * 24));
+// var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+// var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+// var seconds = Math.floor((t % (1000 * 60)) / 1000);
+// document.getElementById("timerThree").innerHTML = days + ":"
+// + hours + ":" + minutes + ":" + seconds + "s";
+//     if (t < 0) {
+//         clearInterval(x);
+//         document.getElementById("timerThree").innerHTML = "EXPIRED";
+//     }
+// }, 1000);
+// var deadlineFour = new Date("July 21, 2018 15:00:00").getTime();
+// var x = setInterval(function() {
+// var now = new Date().getTime();
+// var t = deadlineFour - now;
+// var days = Math.floor(t / (1000 * 60 * 60 * 24));
+// var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+// var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+// var seconds = Math.floor((t % (1000 * 60)) / 1000);
+// document.getElementById("timerFour").innerHTML = days + ":"
+// + hours + ":" + minutes + ":" + seconds + "s";
+//     if (t < 0) {
+//         clearInterval(x);
+//         document.getElementById("timerFour").innerHTML = "EXPIRED";
+//     }
+// }, 1000);
+
+// var deadlineFive = new Date("July 22, 2018 15:00:00").getTime();
+// var x = setInterval(function() {
+// var now = new Date().getTime();
+// var t = deadlineThree - now;
+// var days = Math.floor(t / (1000 * 60 * 60 * 24));
+// var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+// var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+// var seconds = Math.floor((t % (1000 * 60)) / 1000);
+// document.getElementById("timerFive").innerHTML = days + ":"
+// + hours + ":" + minutes + ":" + seconds + "s";
+//     if (t < 0) {
+//         clearInterval(x);
+//         document.getElementById("timerFive").innerHTML = "EXPIRED";
+//     }
+// }, 1000);
+
+// var deadlineFive = new Date("July 23, 2018 15:00:00").getTime();
+// var x = setInterval(function() {
+// var now = new Date().getTime();
+// var t = deadlineThree - now;
+// var days = Math.floor(t / (1000 * 60 * 60 * 24));
+// var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+// var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+// var seconds = Math.floor((t % (1000 * 60)) / 1000);
+// document.getElementById("timerSix").innerHTML = days + ":"
+// + hours + ":" + minutes + ":" + seconds + "s";
+//     if (t < 0) {
+//         clearInterval(x);
+//         document.getElementById("timerSix").innerHTML = "EXPIRED";
+//     }
+// }, 1000);
+
+// var deadlineFive = new Date("July 23, 2018 15:00:00").getTime();
+// var x = setInterval(function() {
+// var now = new Date().getTime();
+// var t = deadlineThree - now;
+// var days = Math.floor(t / (1000 * 60 * 60 * 24));
+// var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+// var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+// var seconds = Math.floor((t % (1000 * 60)) / 1000);
+// document.getElementById("timerSix").innerHTML = days + ":"
+// + hours + ":" + minutes + ":" + seconds + "s";
+//     if (t < 0) {
+//         clearInterval(x);
+//         document.getElementById("timerSix").innerHTML = "EXPIRED";
+//     }
+// }, 1000);
 
 
 
