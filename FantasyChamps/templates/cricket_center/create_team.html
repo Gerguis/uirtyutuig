@@ -16,14 +16,30 @@
 	<div class="MatchArea">
 		<div class="TeamPreviewContainer">	
 			<center>
-				<i class="fa fa-chevron-circle-down CloseTeamPreviewContainer"></i>
-				<hr style="width:80%">
-			</center>
+				<i class="fa fa-chevron-circle-down CloseTeamPreviewContainer" style="position:relatice;top:10px;font-size:20px;color:white;"></i>
+				<hr style="border-color:white;width:80%;">
+			</center>	
 			<div class="AllPlayers">
-				<div class="KeepersPreview"></div>
-				<div class="BatsmenPreview"></div>
-				<div class="AllrounderPreview"></div>
-				<div class="BowlerPreview"></div>
+				<div class="KeepersPreview">
+				</div>
+				<div class="BatsmenPreview">
+				</div>
+				<div class="AllrounderPreview">
+				</div>
+				<div class="BowlerPreview">
+				</div>
+				<div class="CaptainVicePrivew">
+					<div class="PlayerView" style="width: 25%;">
+						<span class="PlayerNameView">Captain</span>
+						<center><img class="player_image" src="{% static "images/question.png" %}"></center>
+						<span class="PlayerNameView">Select</span>
+					</div>
+					<div class="PlayerView" style="width: 25%;">
+						<span class="PlayerNameView">Vice Captain</span>
+						<center><img class="player_image" src="{% static "images/question.png" %}"></center>
+						<span class="PlayerNameView">Select</span>
+					</div>
+				</div>
 			</div>
 		</div>
 		{% if team%}
@@ -186,13 +202,27 @@
 		selected_batsmen = $('.batsmen:checkbox:checked')
 		selected_allrounders = $('.allrounders:checkbox:checked')
 		selected_bowlers = $('.bowlers:checkbox:checked')
+		selected_captain = $('.captain_class:checkbox:checked')
+		selected_vicecaptain = $('.vice_class:checkbox:checked')
+		// if(selected_captain.length == 1){
+		// 	$(".CaptainVicePrivew").html("")
+		// 	var name_array = selected_captain[0].name.split('_')
+		// 	$(".CaptainVicePrivew").append("<div class=\"PlayerView\" style=\"position:relative; margin-top:0px; width: 100%\">Captain :" + name_array[0] + " " + name_array[1] + " </div><br>")
+		// }
+		// else{
+		// 	$(".CaptainVicePrivew").html("")
+		// 	$(".CaptainVicePrivew").append("<div class=\"PlayerView\" style=\"position:relative; margin-top:0px; width: 100%\">No Captain Selected</div><br>")
+		// }
+
 		if (selected_keepers.length == 1){
 			var name_array = selected_keepers[0].name.split('_')
 			KeepersDivWidth = 100/selected_keepers.length+"%"
 			$(".KeepersPreview").html("<div class=\"PlayerView\" style=\"position:relative; margin-top:0px; width: " + KeepersDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/keeper.png" %}\"></center>" + name_array[0] + " " + name_array[1] + "</div>")
 		}
 		else{
-			$(".KeepersPreview").html("<center><div class=\"PlayerView\" style=\"width: 100%\">No Keepers Selected</div></center>")
+			$(".KeepersPreview").html("")
+			$(".KeepersPreview").append("<div class=\"PlayerView\" style=\"width: 25%\"><center><img class=\"player_image\" src=\"{% static "images/question.png" %}\"></center><span class=\"PlayerNameView\">Keeper</span></div>")	
+			
 		}
 		if (selected_batsmen.length == 1){
 			var name_array = selected_batsmen[0].name.split('_')
@@ -200,7 +230,10 @@
 			$(".BatsmenPreview").html("<div class=\"PlayerView\" style=\"width: " + BatsmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center><span class=\"PlayerNameView\">" + name_array[0] + " " + name_array[1] + "</span></div>")
 		}
 		else{
-			$(".BatsmenPreview").html("<center><div class=\"PlayerView\" style=\"width: 100%; display:inline-block; vertical-align:middle;\">No Batsman Selected</div></center>")	
+			$(".BatsmenPreview").html("")
+			for(var i=0;i<4;i++){
+				$(".BatsmenPreview").append("<div class=\"PlayerView\" style=\"width: 25%\"><center><img class=\"player_image\" src=\"{% static "images/question.png" %}\"></center><span class=\"PlayerNameView\">Batsmen</span></div>")	
+			}
 		}
 		if (selected_batsmen.length === 2){
 			BatsmenDivWidth = 100/selected_batsmen.length+"%"
@@ -242,7 +275,10 @@
 			$(".AllrounderPreview").html("<div class=\"PlayerView\" style=\"width: " + AllrounderDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/allrounder.png" %}\"></center><span class=\"PlayerNameView\">" + name_array[0] + " " + name_array[1] + "</span></div>")
 		}
 		else{
-			$(".AllrounderPreview").html("<center><div class=\"PlayerView\" style=\"width: 100%\">No Allrounders Selected</div></center>")	
+			$(".AllrounderPreview").html("")
+			for(var i=0;i<2;i++){
+				$(".AllrounderPreview").append("<div class=\"PlayerView\" style=\"width: 50%\"><center><img class=\"player_image\" src=\"{% static "images/question.png" %}\"></center><span class=\"PlayerNameView\">Allrounder</span></div>")	
+			}
 		}
 		if (selected_allrounders.length === 2){
 			AllrounderDivWidth = 100/selected_allrounders.length+"%"
@@ -267,7 +303,11 @@
 			$(".BowlerPreview").html("<div class=\"PlayerView\" style=\"width: " + BolwersDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/bowlers.png" %}\"></center><span class=\"PlayerNameView\">" + name_array[0] + " " + name_array[1] + "</span></div>")
 		}
 		else{
-			$(".BowlerPreview").html("<center><div class=\"PlayerView\" style=\"width: 100%\">No Batsman Selected</div></center>")	
+			$(".BowlerPreview").html("")
+			for(var i=0;i<4;i++){
+				$(".BowlerPreview").append("<div class=\"PlayerView\" style=\"width: 25%\"><center><img class=\"player_image\" src=\"{% static "images/question.png" %}\"></center><span class=\"PlayerNameView\">Bowler</span></div>")	
+			}
+
 		}
 		if (selected_bowlers.length === 2){
 			BolwersDivWidth = 100/selected_bowlers.length+"%"
@@ -301,29 +341,33 @@
 				$(".BowlerPreview").append("<div class=\"PlayerView\" style=\"width: " + BolwersDivWidth + ";\"><center><img class=\"player_image\" src=\"{% static "images/bowlers.png" %}\"></center><span class=\"PlayerNameView\">" + name_array[0] + " " + name_array[1] + "</span></div>")
 			}
 		}
-		//	$(".BatsmenPreview").(function(){ style=\"width:50px;height:50px;overflow-wrap: break-word;display:block\"
-			// 	for(var i=0; i<5; i++){
-			// 		"<div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[0].name.replace(/_/g, ' ') + "</div>"
-			// 	}
-			// });
-		
+		if(selected_captain.length == 1){
+			$('.CaptainVicePrivew').html("")
+			var name_array = selected_captain[0].value.split('_')	
+			$('.CaptainVicePrivew').append("<div class=\"PlayerView\" style=\"width: 50%;\"><center><span class=\"PlayerNameView\">Captain</span><img class=\"player_image\" src=\"{% static "images/2x.png" %}\"><span class=\"PlayerNameView\">" + name_array[0] + " " + name_array[1] + "</span></center></div>")
+		}
+		else if(selected_captain.length == 0){
+			$('.CaptainVicePrivew').html("")
+			$('.CaptainVicePrivew').append("<div class=\"PlayerView\" style=\"width: 50%;\"><center><span class=\"PlayerNameView\">Captain</span><img class=\"player_image\" src=\"{% static "images/2x.png" %}\"><span class=\"PlayerNameView\">Select</span></center></div>")
+		}	
+		else{
+			$('.CaptainVicePrivew').html("")
+			$('.CaptainVicePrivew').append("<div class=\"CaptainClass\"><center>Something Went Wrong...</center></div>")
+		}
 
-		// if (selected_batsmen.length == 2){
-		// 	$(".BatsmenPreview").html("<div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[0].name.replace(/_/g, ' ') + "</div><div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[1].name.replace(/_/g, ' ') + "</div>")
-		// }
+		if(selected_vicecaptain.length == 1){
+			var name_array = selected_vicecaptain[0].value.split('_')
+			$('.CaptainVicePrivew').append("<div class=\"PlayerView\" style=\"width: 50%;\"><center><span class=\"PlayerNameView\">Vice Captain</span><img class=\"player_image\" src=\"{% static "images/15x.png" %}\"><span class=\"PlayerNameView\">" + name_array[0] + " " + name_array[1] + "</span></center></div>")
+		}
+		else if(selected_vicecaptain.length == 0){
+			$('.CaptainVicePrivew').append("<div class=\"PlayerView\" style=\"width: 50%;\"><center><span class=\"PlayerNameView\">Vice Captain</span><img class=\"player_image\" src=\"{% static "images/15x.png" %}\"><span class=\"PlayerNameView\">Select</span></center></div>")
+		}	
+		else{
+			$('.CaptainVicePrivew').append("<div class=\"ViceClass\"><center>Something Went Wrong...</center></div>")
+		}
 
-		// if (selected_batsmen.length == 3){
-		// 	$(".BatsmenPreview").html("<div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[0].name.replace(/_/g, ' ') + "</div><div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[1].name.replace(/_/g, ' ') + "</div><div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[2].name.replace(/_/g, ' ') + "</div>")
-		// }
 
-		// if (selected_batsmen.length == 4){
-		// 	$(".BatsmenPreview").html("<div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[0].name.replace(/_/g, ' ') + "</div><div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[1].name.replace(/_/g, ' ') + "</div><div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[2].name.replace(/_/g, ' ') + "</div><div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[3].name.replace(/_/g, ' ') + "</div>")
-		// }
-
-		// if (selected_batsmen.length == 5){
-		// 	$(".BatsmenPreview").html("<div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[0].name.replace(/_/g, ' ') + "</div><div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[1].name.replace(/_/g, ' ') + "</div><div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[2].name.replace(/_/g, ' ') + "</div><div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[3].name.replace(/_/g, ' ') + "</div><div class=\"PlayerView\" style=\"width: " + BatmenDivWidth + "\"><center><img class=\"player_image\" src=\"{% static "images/batsman.png" %}\"></center>" + selected_batsmen[4].name.replace(/_/g, ' ') + "</div>")
-		// }
-	    var div = $(".TeamPreviewContainer");
+		var div = $(".TeamPreviewContainer");
 	    var height = div.css({
 	        display: "inline"
 	    }).height();
@@ -368,13 +412,6 @@
 	    		$(this).prev().prev().prop('checked',false);
 	    	}   
 	    }
-	    // if(checked && sibchecked) {
-	    //     $(this).prop('checked',true);
-	    //     $(this).prev().prev().prop('checked',true);
-	    // }
-	    // if(checked) {
-	    //     $(this).prop('checked',true);
-	    // }
 	});
 
 	function openCity(evt, cityName) {

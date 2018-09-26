@@ -777,12 +777,10 @@ input[type=radio]:checked + label {
 .TeamPreviewContainer{
   position: fixed;
   width: 580px;
-  height: -moz-calc(100vh - 50px);
-  height: -webkit-calc(100vh - 50px);
-  height: calc(100vh - 100px);
+  height: 100%;
   z-index: 1;
   display: none;
-  background-color: #3EBAEE;
+  background-color: #1A1A1A;/*#0057EE;*/
   white-space: nowrap;
   font-size: 15px;
 }
@@ -808,7 +806,7 @@ input[type=radio]:checked + label {
   text-align: center;
 }
 
-.KeepersPreview, .BatsmenPreview, .AllrounderPreview, .BowlerPreview{
+.KeepersPreview, .BatsmenPreview, .AllrounderPreview, .BowlerPreview, .CaptainVicePrivew{
   position: relative;
   height: 17%  !important;
   text-align: center;
@@ -893,7 +891,10 @@ input[type=radio]:checked + label {
   .TeamPreviewContainer{
     width: 100%;
     font-size: 12px;
-    bottom: 0px;
+    bottom: 40px;
+    height: -moz-calc(100vh - 90px);
+    height: -webkit-calc(100vh - 90px);
+    height: calc(100vh - 90px);
     word-break: break-all;
     white-space: normal;
   }
