@@ -560,26 +560,6 @@ input[type=radio]:checked + label {
   display: none;  
 }
 
-/*.custom_cap_vice{
-  display: inline-block;
-  position: relative;
-  text-align: center;
-  vertical-align: center;
-  width: 5%;
-  height: 90%;
-  top:5%;
-}
-
-.cap_vice_center{
-  position: relative;
-  transform: translateY(-50%);
-}*/
-
-
-
-
-
-
 /***************ALL NEW CONTENT*****************/
 .CustomInput{
   display: none;
@@ -646,15 +626,6 @@ input[type=radio]:checked + label {
 .vice_class:checked + label{
   color:green;
 }
-
-/*
-.CustomInput:checked + label input{
-  display: inline-block;
-  position: relative;
-  top:-20%;
-  left: 40%;
-  margin-left: 20px;
-}*/
 
 .CustomInput:checked + label label{
   display: inline-block;
@@ -855,13 +826,6 @@ input[type=radio]:checked + label {
   color:#fff
   text-align:center;
 }
-
-/*@media (min-width: 581px){
-  .custom_cap, .custom_vice{
-    left:50%;
-  }
-}
-*/
 
 /*****On Smaller Devices*****/
 @media (min-width: 101px) and (max-width: 401px) {
@@ -1131,13 +1095,3 @@ input[type=radio]:checked + label {
   h5 { font-size: 4.5vw; }
   h6 { font-size: 3.5vw; }
 }
-
-
-
-
-
-
-
-
-
-
